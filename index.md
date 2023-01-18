@@ -7,7 +7,7 @@ We are a theoretical laboratory in the [McKetta Department of Chemical Engineeri
 Our research group brings together ideas from engineering, physics, and applied mathematics to understand biology.
 We are currently focused on describing the behavior of neurons, via theory and simulation.
 <br>
-\[[learn more](/research)\]
+<!--\[[learn more](/research)\]-->
 
 
 ## Joining the Lab
