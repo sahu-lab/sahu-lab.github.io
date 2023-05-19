@@ -84,7 +84,7 @@ We begin by constructing a fictitious system, where all associated quantities ar
 At present, we do not know what these quantities represent, and we will determine their physical meaning subsequently.
 It is most natural to begin with the fictitious [Lagrangian][Lagrangian_mechanics]{:target="_blank"} $$ \hat{\mathcal{L}} $$, which is a function of
 $$ \{ \boldsymbol{\hat{q}}^\alpha \} $$,
-$$ \{ \mathrm{d} \boldsymbol{\hat{q}}^\alpha / \mathrm{d} \hat{t} \} $$,
+$$ \{ \mathrm{d} \boldsymbol{\hat{q}}^\alpha / \mathrm{d} \hat{t} \mkern1mu \} $$,
 $$ \hat{s} $$,
 and
 $$ \mathrm{d} \hat{s} / \mathrm{d} \hat{t} $$,
@@ -99,13 +99,11 @@ $$
 	\, + \, \dfrac{Q}{2} \bigg(
 		\dfrac{\mathrm{d} \hat{s}}{\mathrm{d} \hat{t}}
 	\bigg)^2
-	- \, \big(
-		3 N + 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
+	- \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
 	~.
 $$
 
-Here $$ k_{\mathrm{B}} $$ is [Boltzmann's constant][Boltzmann_constant], $$ T_{\mathrm{ext}} $$ is the temperature we seek to impose externally, and $$ U $$ is the [potential energy][Potential_energy]{:target="_blank"} of the system.
+Here $$ g $$ is a yet-to-be-specified dimensionless constant, $$ k_{\mathrm{B}} $$ is [Boltzmann's constant][Boltzmann_constant], $$ T_{\mathrm{ext}} $$ is the temperature we seek to impose externally, and $$ U $$ is the [potential energy][Potential_energy]{:target="_blank"} of the system.
 The quantity $$ \hat{s} $$ is dimensionless, implying the corresponding inertial term $$ Q $$ has dimensions of energy $$ \cdot $$ time<sup>2</sup>.
 However, since $$ \hat{s} $$ is thought of as relating to a heat bath, $$ Q $$ is often called the *thermal mass* or *thermal inertia*.
 With the Lagrangian, the [conjugate momenta][Generalized_momentum]{:target="_blank"} are determined according to the standard procedure:
@@ -146,15 +144,14 @@ $$
 	\, + \, U \big(
 		\{\boldsymbol{\hat{q}}^\alpha\}
 	\big)
-	\, + \, \dfrac{p^2_{\! s}}{2 Q}
-	\, + \, \big(
-		3 N + 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
+	\, + \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
+	\, + \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
 	~.
 $$
 
 At this point, two tasks remain.
 We seek to interpret all of the fictitious quantities and relate them to our physical system, and then show that microcanonical simulations of the extended system (as governed by $$ \hat{\mathcal{H}} $$) cause the physical system to sample the canonical distribution.
+In the process of doing so, the parameter $$ g $$ will be determined.
 
 
 ## The physical interpretation of fictitious quantities
@@ -183,24 +180,18 @@ Under such a change of variables, the fictitious Lagrangian transforms to
 
 $$
 	\hat{\mathcal{L}}
-	\, \rightarrow \, b^{2 - 2m + 2n} \mkern1mu \sum_{\alpha = 1}^N \dfrac{m \hat{s}^2}{2} \, \dfrac{\mathrm{d} \boldsymbol{\hat{q}}^\alpha}{\mathrm{d} \hat{t}} \boldsymbol{\cdot} \dfrac{\mathrm{d} \boldsymbol{\hat{q}}^\alpha}{\mathrm{d} \hat{t}}
+	\, \rightarrow \, b^{2 - 2m + 2n} \mkern1mu \sum_{\alpha = 1}^N \dfrac{m \hat{s}^2}{2} \mkern1mu \dfrac{\mathrm{d} \boldsymbol{\hat{q}}^\alpha}{\mathrm{d} \hat{t}} \! \boldsymbol{\cdot} \! \dfrac{\mathrm{d} \boldsymbol{\hat{q}}^\alpha}{\mathrm{d} \hat{t}}
 	\, - \, U \big(
 		\{b^n \mkern1mu \boldsymbol{\hat{q}}^\alpha\}
 	\big)
-$$
-
-$$
-	\hspace{20pt} + \, b^{2 - 2m} \mkern1mu \dfrac{Q}{2} \bigg(
+	\, + \, b^{2 - 2m} \mkern1mu \dfrac{Q}{2} \mkern-1mu \bigg(
 		\dfrac{\mathrm{d} \hat{s}}{\mathrm{d} \hat{t}}
 	\bigg)^2
-	- \, \big(
-		3 N + 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln (b \mkern1mu \hat{s})
+	- \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \mkern1mu \ln (b \mkern1mu \hat{s})
 	~.
-	\hspace{-20pt}
 $$
 
-If we choose $$ m = 1 $$ and $$ n = 0 $$, then the Lagrangian is only shifted by the constant factor $$ - (3N + 1) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln b $$---which does not affect the dynamics.
+If we choose $$ m = 1 $$ and $$ n = 0 $$, then the Lagrangian is shifted by the constant factor $$ - g \mkern1mu k_{\mathrm{B}} T_{\mathrm{ext}} \mkern1mu \ln b $$, which does not affect the dynamics.
 Since $$ \boldsymbol{\hat{q}}^\alpha $$ is unaffected by the scaling, we interpret it as the real position:
 $$ \boldsymbol{\hat{q}}^\alpha = \boldsymbol{q}^\alpha $$.
 We also observe that
@@ -224,7 +215,7 @@ $$
 
 
 
-## The sampling of the canonical ensemble
+## Sampling the canonical ensemble
 
 Our final task is to show how solving Hamilton's equations in the extended, fictitious system sets the temperature to a constant value in the real system.
 We do so by examining the [partition function][Partition_function]{:target="_blank"}, which describes how often a system can be found in a particular microstate.
@@ -238,8 +229,8 @@ $$
 	\int \mathrm{d} \hat{p}^{}_{\! s}
 	\int \mathrm{d} \hat{s} \,
 	\prod_{\alpha = 1}^N \bigg(
-		\int \mathrm{d} \boldsymbol{\hat{p}}^\alpha
-		\int \mathrm{d} \boldsymbol{\hat{q}}^\alpha
+		\int \! \mathrm{d} \boldsymbol{\hat{p}}^\alpha
+		\int \! \mathrm{d} \boldsymbol{\hat{q}}^\alpha
 	\bigg) \,
 	\bigg\{
 		\delta \Big(
@@ -285,10 +276,8 @@ $$
 		\hat{p}^{}_{\! s}
 	\big)
 	\, = \, \mathcal{H} ( \boldsymbol{\Gamma} )
-	\, + \, \dfrac{p^2_{\! s}}{2 Q}
-	\, + \, \big(
-		3 N + 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
+	\, + \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
+	\, + \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
 	~,
 $$
 
@@ -315,10 +304,8 @@ $$
 	\int \! \mathrm{d} \boldsymbol{\Gamma} \,
 		\hat{s}^{3 N} \, \delta \bigg(
 			\mathcal{H} ( \boldsymbol{\Gamma} )
-			\, + \, \dfrac{p^2_{\! s}}{2 Q}
-			\, + \, \big(
-				3 N + 1
-			\big) \mkern1mu k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \mkern1mu \ln \hat{s}
+			\, + \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
+			\, + \, g \mkern1mu k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \mkern1mu \ln \hat{s}
 			\, - \, \hat{E}
 		\mkern1mu \bigg)
 	~.
@@ -335,13 +322,13 @@ Importantly, the argument of the $$ \delta $$-function now contains only a singl
 By applying the $$ \delta $$-function identity
 
 $$
-	\delta \big( \hat{g} (\hat{s}) \big)
-	\, = \, \dfrac{\delta ( \hat{s} - \hat{s}_0 )}{\hat{g}{\mkern1mu}'(\hat{s}_0)}
+	\delta \big( \hat{f} (\hat{s}) \big)
+	\, = \, \dfrac{\delta ( \hat{s} - \hat{s}_0 )}{ \lvert \hat{f}{\mkern1mu}'(\hat{s}_0) \rvert }
 $$
 
-for any function $$ \hat{g} (\hat{s}) $$ with
+for any function $$ \hat{f} (\hat{s}) $$ with
 $$
-	g (\hat{s}_0) = 0
+	f (\hat{s}_0) = 0
 $$,
 and introducing
 $$
@@ -353,13 +340,11 @@ as the [inverse temperature][Thermodynamic_beta]{:target="_blank"}, we find
 $$
 	\delta \bigg(
 		\mathcal{H} ( \boldsymbol{\Gamma} )
-		\, + \, \dfrac{p^2_{\! s}}{2 Q}
-		\, + \, \big(
-			3 N + 1
-		\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
+		\, + \, \dfrac{ \hat{p}^2_{\! s}}{2 Q}
+		\, + \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \ln \hat{s}
 		\, - \, \hat{E}
 	\mkern1mu \bigg)
-	\, = \, \dfrac{\hat{s}_0 \mkern1mu \beta_{\mathrm{ext}}}{3N + 1}
+	\, = \, \dfrac{\hat{s}_0 \mkern1mu \beta_{\mathrm{ext}}}{g}
 	\, \delta \big(
 		\hat{s}
 		\, - \, \hat{s}_0
@@ -372,10 +357,10 @@ where
 $$
 	\hat{s}_0
 	\, = \, \exp \bigg\{
-		\dfrac{\beta_{\mathrm{ext}}}{3N + 1} \, \bigg(
+		\dfrac{\beta_{\mathrm{ext}}}{g} \, \bigg(
 			\hat{E}
 			\, - \, \hat{\mathcal{H}} ( \boldsymbol{\Gamma} )
-			\, - \, \dfrac{p^2_{\! s}}{2 Q}
+			\, - \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
 		\bigg)
 	\bigg\}
 	~.
@@ -387,13 +372,41 @@ After some rearrangement, we obtain
 $$
 	\hat{W} (\hat{E})
 	\, = \, \dfrac{
+		\beta^{}_{\mathrm{ext}} \mkern1mu E_0
+	} {g \, N! \, h^{3N+1}} \,
+	\int \! \mathrm{d} \hat{p}^{}_{\! s}
+	\int \! \mathrm{d} \boldsymbol{\Gamma} \,
+	\exp \Bigg\{
+		\dfrac{ \beta^{}_{\mathrm{ext}} (3N + 1)}{g} \bigg(
+			\hat{E}
+			\, - \, \mathcal{H} ( \boldsymbol{\Gamma} )
+			\, - \, \dfrac{\hat{p}^{2}_{\! s}}{2 Q}
+		\bigg)
+	\Bigg\}
+	~.
+$$
+
+As the real system is meant to sample the canonical distribution, we choose
+
+$$
+	g
+	\, = \, 3 \mkern1mu N
+	\, + \, 1
+$$
+
+to recover the [Boltzmann factor][Boltzmann_factor]{:target="_blank"}.
+The partition function of the fictitious system can then be expressed as
+
+$$
+	\hat{W} (\hat{E})
+	\, = \, \dfrac{
 		\beta^{}_{\mathrm{ext}} \mkern1mu E_0 \,
 		\exp ( \beta^{}_{\mathrm{ext}} \mkern1mu \hat{E} )
 	} {(3N + 1) \, N! \, h^{3N+1}} \,
-	\int \mathrm{d} \hat{p}^{}_{\! s} \exp \bigg\{
-		- \dfrac{\beta^{}_{\mathrm{ext}} \, p_{\! s}^2}{(2 Q)}
+	\int \! \mathrm{d} \hat{p}^{}_{\! s} \exp \bigg\{
+		- \dfrac{\beta^{}_{\mathrm{ext}} \, \hat{p}_{\! s}^2}{2 Q}
 	\bigg\}
-	\int \mathrm{d} \boldsymbol{\Gamma} \,
+	\, \int \! \mathrm{d} \boldsymbol{\Gamma} \,
 	\exp \Big\{
 		- \beta^{}_{\mathrm{ext}} \mkern1mu \mathcal{H} ( \boldsymbol{\Gamma} )
 	\Big\}
@@ -541,10 +554,11 @@ and
 $$
 	\dfrac{\mathrm{d} \hat{p}^{}_{\! s}}{\mathrm{d} \hat{t}}
 	\, = \, \sum_{\alpha = 1}^N \dfrac{\boldsymbol{\hat{p}}^\alpha \boldsymbol{\cdot} \boldsymbol{\hat{p}}^\alpha}{m \hat{s}^3}
-	\, - \, \dfrac{(3N+1) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}}{\hat{s}}
+	\, - \, \dfrac{g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}}{\hat{s}}
 	~.
 $$
 
+Note that we once again express the dynamical equation for $$ \hat{p}^{}_{\! s} $$ in terms of $$ g $$, rather than the previously determined value of $$ 3N + 1 $$, due to a subtlety that will be discussed subsequently.
 At this point, Hoover recognized the utility in expressing these equations entirely in terms of real quantities.
 To this end, we introduce the following fictitious quantities that depend on the *real* time (note that we drop the 'hat' accent):
 
@@ -600,7 +614,7 @@ and
 $$
 	\dot{p}^{}_{\! \eta}
 	\, = \, \sum_{\alpha = 1}^N \dfrac{\boldsymbol{p}^\alpha \boldsymbol{\cdot} \boldsymbol{p}^\alpha}{m}
-	\, - \, (3N+1) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
+	\, - \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
 	~.
 $$
 
@@ -630,6 +644,139 @@ $$.
 The practical consequences of this formulation are significant, and the above equations---referred to as the Nosé--Hoover equations---are generally used in numerical implementations.
 
 
+## Ergodicity, time averages, and the value of $$ g $$
+
+Recall that in MD simulations, the expectation value of a generic phase variable $$ B (\boldsymbol{\Gamma}) $$ is calculated as a time average.
+This value is assumed to be equal to the ensemble average with the ergodic hypothesis.
+Thus, for a fictitious system evolved in the scaled time $$ \hat{t} $$, we expect
+
+$$
+	\Big\langle
+		B \big( \{ \boldsymbol{q}^\alpha \}, \{ \boldsymbol{p}^\alpha \} \big)
+	\Big\rangle_{\! \mathrm{c}}
+	\, = \, \Big\langle
+		B \big( \{ \boldsymbol{\hat{q}}^\alpha \}, \{ \boldsymbol{\hat{p}}^\alpha / \hat{s} \} \big)
+	\Big\rangle_{\! \hat{t}}
+	\, := \, \lim_{\hat{\tau} \rightarrow \infty} \dfrac{1}{\hat{\tau}} \int_0^{\hat{\tau}}
+		B \big( \{ \boldsymbol{\hat{q}}^\alpha (\hat{t}) \}, \{ \boldsymbol{\hat{p}}^\alpha (\hat{t}) / \hat{s} (\hat{t}) \} \big)
+	~ \mathrm{d} \hat{t}
+	~,
+$$
+
+where the left-hand side denotes the expectation value in the canonical ensemble, i.e. an [ensemble average][Ensemble_average]{:target="_blank"}.
+A complication arises when transitioning from the Nosé to the Nosé--Hoover formalism, however, because the times $$ \hat{t} $$ and $$ t $$ are related by a non-constant scale factor.
+Thus, some care must be taken to ensure that a uniform sampling in real time with the Nosé--Hoover dynamics correctly determines equilibrium averages.
+To this end, we begin by expressing the average value of a phase variable in real time as
+
+$$
+	\Big\langle
+		B \big( \{ \boldsymbol{q}^\alpha \}, \{ \boldsymbol{p}^\alpha \} \big)
+	\Big\rangle_{\! t}
+	\, := \, \lim_{\tau \rightarrow \infty} \dfrac{1}{\tau} \int_0^{\tau}
+		B \big( \{ \boldsymbol{q}^\alpha (t) \}, \{ \boldsymbol{p}^\alpha (t) \} \big)
+	~ \mathrm{d} t
+	~.
+$$
+
+Next, we multiply and divide by $$ \hat{\tau} $$ and rearrange terms to obtain
+
+$$
+	\Big\langle
+		B \big( \{ \boldsymbol{q}^\alpha \}, \{ \boldsymbol{p}^\alpha \} \big)
+	\Big\rangle_{\! t}
+	\, = \, \lim_{\tau \rightarrow \infty} \Bigg[
+		\Bigg(
+			\dfrac{1}{\hat{\tau}} \int_0^{\tau}
+				B \big( \{ \boldsymbol{q}^\alpha (t) \}, \{ \boldsymbol{p}^\alpha (t) \} \big)
+			~ \mathrm{d} t
+		\Bigg) \bigg/  \bigg( \dfrac{\tau}{\hat{\tau}} \bigg)
+	\Bigg]
+	~.
+$$
+
+At this point, we change variables from $$ t $$ to $$ \hat{t} $$, for which $$ \mathrm{d} t = \mathrm{d} \hat{t} / \hat{s} $$ and $$ \tau = \int_0^{\hat{\tau}} \mathrm{d}\hat{t} / \hat{s} $$.
+After some algebra, the time average of a phase variable in the Nosé--Hoover dynamics can be expressed in terms of canonical ensemble averages as
+
+$$
+	\Big\langle
+		B \big( \{ \boldsymbol{q}^\alpha \}, \{ \boldsymbol{p}^\alpha \} \big)
+	\Big\rangle_{\! t}
+	\, = \, \dfrac{
+		\Big\langle
+			B \big( \{ \boldsymbol{q}^\alpha \}, \{ \boldsymbol{p}^\alpha \} \big) / \hat{s}
+		\Big\rangle_{\! \mathrm{c}}
+	}{
+		\big\langle
+			1 / \hat{s}
+		\big\rangle_{\! \mathrm{c}}
+	}
+	~.
+$$
+
+The canonical averages are now expressed in terms of an integral over the extended phase space.
+Since the quantity to be averaged depends on $$ \hat{s} $$, we use a form of the fictitious partition function *before* the integral over $$ \hat{s} $$ is taken.
+We find
+
+$$
+	\big\langle
+		B ( \boldsymbol{\Gamma} )
+	\big\rangle_{\! t}
+	\, = \, \dfrac{\displaystyle
+		\int \! \mathrm{d} \hat{p}^{}_{\! s}
+		\int \! \mathrm{d} \hat{s}
+		\int \! \mathrm{d} \boldsymbol{\Gamma} \
+			B ( \boldsymbol{\Gamma} ) \,
+			\hat{s}^{3 N - 1} \, \delta \bigg(
+				\mathcal{H} ( \boldsymbol{\Gamma} )
+				\, + \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
+				\, + \, g \mkern1mu k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \mkern1mu \ln \hat{s}
+				\, - \, \hat{E}
+			\mkern1mu \bigg)
+	}{\displaystyle
+		\int \! \mathrm{d} \hat{p}^{}_{\! s}
+		\int \! \mathrm{d} \hat{s}
+		\int \! \mathrm{d} \boldsymbol{\Gamma} \
+			\hat{s}^{3 N - 1} \, \delta \bigg(
+				\mathcal{H} ( \boldsymbol{\Gamma} )
+				\, + \, \dfrac{\hat{p}^2_{\! s}}{2 Q}
+				\, + \, g \mkern1mu k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \mkern1mu \ln \hat{s}
+				\, - \, \hat{E}
+			\mkern1mu \bigg)
+	}
+$$
+
+Importantly, in both integrands $$ \hat{s} $$ is now raised to the power $$ 3N - 1 $$, rather than $$ 3N $$.
+Applying the $$ \delta $$-function identity to both the numerator and denominator and simplifying the result yields
+
+$$
+	\big\langle
+		B ( \boldsymbol{\Gamma} )
+	\big\rangle_{\! t}
+	\, = \, \dfrac{\displaystyle
+		\int \! \mathrm{d} \boldsymbol{\Gamma} \
+			B ( \boldsymbol{\Gamma} ) \, \exp \bigg\{
+				- \beta_{\mathrm{ext}} \mathcal{H} ( \boldsymbol{\Gamma} ) \cdot \dfrac{3N}{g}
+			\mkern1mu \bigg\}
+	}{\displaystyle
+		\int \! \mathrm{d} \boldsymbol{\Gamma} \
+			\exp \bigg\{
+				- \beta_{\mathrm{ext}} \mathcal{H} ( \boldsymbol{\Gamma} ) \cdot \dfrac{3N}{g}
+			\mkern1mu \bigg\}
+	}
+	~.
+$$
+
+Thus, to recover the canonical ensemble averages within the Nosé--Hoover formalism, we set
+
+$$
+	g
+	\, = \, 3 \mkern1mu N
+$$
+
+rather than the previously determined value of $$ 3N + 1 $$, which is appropriate only within the Nosé formalism.[^ref_nose_jcp]<sup>,</sup>[^ref_evans_jcp]
+
+
+
 ## Additional insights
 
 With the Nosé--Hoover equations expressed in terms of the real time $$ t $$, we can draw additional insights about the dynamics of the extended system.
@@ -645,39 +792,35 @@ $$
 	~,
 $$
 
-where $$ N_{\mathrm{DOFs}} $$ is the number of physical [degrees of freedom][Degrees_of_freedom]{:target="_blank"} and $$ \langle \ldots \rangle $$ denotes an [ensemble average][Ensemble_average]{:target="_blank"}.
+where $$ N_{\mathrm{DOFs}} $$ is the number of physical [degrees of freedom][Degrees_of_freedom]{:target="_blank"}.
 Consequently, we define an "*instantaneous temperature*" $$ T(t) $$ according to
 
 $$
 	k_{\mathrm{B}} \mkern1mu T(t)
 	\, := \, \dfrac{1}{N_{\mathrm{DOFs}}} \, \sum_{\alpha = 1}^N \dfrac{\boldsymbol{p}^\alpha \boldsymbol{\cdot} \boldsymbol{p}^\alpha}{m}
-	~,
-$$
-
-for which the dynamical equation governing $$ p^{}_{\! \eta} $$ can be written as
-
-$$
-	\dot{p}^{}_{\! \eta}
-	\, = \, N_{\mathrm{DOFs}} \, k_{\mathrm{B}} \mkern1mu T(t)
-	\, - \, \big(
-		3 N
-		+ 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
 	~.
 $$
 
-If $$ N_{\mathrm{DOFs}} $$ were to equal $$ 3N + 1 $$, then there would be a simple physical interpretation for the drag force, which affects all particle momenta:
+For a system of $$ N $$ particles with no global constraints on the dynamics, $$ N_{\mathrm{DOFs}} = 3N $$, for which the dynamical equation governing $$ p^{}_{\! \eta} $$ can be written as
+
+$$
+	\dot{p}^{}_{\! \eta}
+	\, = \, N_{\mathrm{DOFs}} \Big(
+		k_{\mathrm{B}} \mkern1mu T(t)
+		\, - \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
+	\Big)
+	~.
+$$
+
+We thus observe a simple physical interpretation for the drag force, which affects all particle momenta:
 
 - it "cools down" a system that is too "hot," for which $$ T(t) > T_{\mathrm{ext}} $$
 - it "heats up" a system that is too "cold," for which $$ T(t) < T_{\mathrm{ext}} $$
 
-As it turns out,
-$$
-	N_{\mathrm{DOFs}}
-	\ne 3 N + 1
-$$.
-However, many numerical implementations of the Nosé--Hoover thermostat in fact *replace* the factor of $$ (3N + 1) $$ with $$ N_{\mathrm{DOFs}} $$ due to the physical motivation described above.[^ref_allen_tildesley]
-This subtlety will be discussed in more detail in a future post.
+We note that in situations with periodic boundary conditions in all three directions, the total linear momentum of the system is conserved.
+In this case, $$ N_{\mathrm{DOFs}} = 3 N - 3 = g $$.
+The latter equality arises because the integration over phase space involves $$ N - 1 $$ vector momenta, rather than $$ N $$.
+Thus, the above equation for $$ \dot{p}^{}_{\! \eta} $$ remains valid.
 
 We close by noting that the Nosé equations can be derived from the fictitious Hamiltonian $$ \mathcal{H} (\boldsymbol{\hat{q}}^\alpha, \boldsymbol{\hat{p}}^\alpha, \hat{s}, \hat{p}^s) $$.
 However, the same is **not** true for the Nosé--Hoover equations, in which the fundamental variables are the real (rather than fictitious) particle positions and momenta.
@@ -691,9 +834,7 @@ $$
 		\{\boldsymbol{q}^\alpha\}
 	\big)
 	\, + \, \dfrac{p^2_{\! \eta}}{2 Q}
-	\, + \, \big(
-		3 N + 1
-	\big) \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \eta
+	\, + \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \eta
 	~,
 $$
 
@@ -715,12 +856,15 @@ In the meantime, we recommend the excellent textbook by Allen and Tildesley.[^re
 
 [^ref_hoover_pra]: W.G. Hoover. <a href="https://doi.org/10.1103/PhysRevA.31.1695" target="_blank">Canonical Dynamics: Equilibrium phase-space distributions</a>. *Phys. Rev. A* **31**, 1695--1697 (1985)
 
+[^ref_evans_jcp]: D.J. Evans and B.L. Holian. <a href="https://doi.org/10.1063/1.449071" target="_blank">The Nosé--Hoover thermostat</a>. *J. Chem. Phys.* **83**, 4069--4074 (1985)
+
 [^ref_allen_tildesley]: M.P. Allen and D.J. Tildesley. <a href="https://doi.org/10.1093/oso/9780198803195.001.0001" target="_blank">Computer Simulation of Liquids</a>, Chapter 3.8.2, 2<sup>nd</sup> Edition. New York: Oxford University Press, 2017. See also the <a href="https://global.oup.com/booksites/content/9780198803195/" target="_blank">Companion Website</a> and <a href="https://github.com/Allen-Tildesley/examples" target="_blank">Github Repository</a>.
 
 
 <!-- Wikipedia links -->
 
 [Boltzmann_constant]: https://en.wikipedia.org/wiki/Boltzmann_constant
+[Boltzmann_factor]: https://en.wikipedia.org/wiki/Boltzmann_distribution
 [Canonical_ensemble]: https://en.wikipedia.org/wiki/Canonical_ensemble
 [Canonical_partition_function]: https://en.wikipedia.org/wiki/Partition_function_(statistical_mechanics)#Canonical_partition_function
 [Degrees_of_freedom]: https://en.wikipedia.org/wiki/Degrees_of_freedom_(physics_and_chemistry)
