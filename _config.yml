@@ -22,8 +22,9 @@ title: Sahu Lab
 email: asahu@che.utexas.edu
 description: >- # this means to ignore newlines until "baseurl:"
   The Sahu Lab is a theoretical research group in the McKetta Department
-  of Chemical Engineering at UT Austin. We currently focus on understanding
-  the physics of neurons via theory and simulation.
+  of Chemical Engineering at UT Austin. We currently use theory and simulation
+  to describe the coupling between electrical and mechanical phenomena in the
+  cell, with the goal of understanding the behavior of neurons.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sahu_lab

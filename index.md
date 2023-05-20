@@ -1,16 +1,16 @@
 ---
 layout: home
-title: Sahu Laboratory
+title: Sahu Lab
 ---
 
 We are a theoretical laboratory in the [McKetta Department of Chemical Engineering](https://che.utexas.edu/){:target="_blank"} at [UT Austin](https://www.utexas.edu){:target="_blank"}.
 Our research group brings together ideas from engineering, physics, and applied mathematics to understand biology.
-We are currently focused on describing the behavior of neurons, via theory and simulation.
+We currently use theory and simulation to describe the coupling between electrical and mechanical phenomena in the cell, with the goal of understanding the behavior of neurons.
 <br>
 <!--\[[learn more](/research)\]-->
 
 
-## Joining the Lab
+# Joining the Lab
 
 We frequently draw from the fields of [continuum mechanics][continuum_mechanics]{:target="_blank"} ([fluid][fluid_mechanics]{:target="_blank"} and [solid][solid_mechanics]{:target="_blank"} mechanics), transport phenomena, [thermodynamics][thermodynamics]{:target="_blank"}, [statistical physics][statistical_mechanics]{:target="_blank"}, and electrodynamics.
 In doing so, we formulate analytical theories and employ numerical methods---for example, the [finite element method][finite_element_method]{:target="_blank"} and [molecular dynamics][molecular_dynamics]{:target="_blank"} simulations.
