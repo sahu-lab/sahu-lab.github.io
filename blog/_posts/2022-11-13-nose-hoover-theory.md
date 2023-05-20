@@ -568,7 +568,7 @@ $$
 	\qquad\quad
 	\text{and}
 	\qquad\quad
-	p^{}_{\! \eta}
+	p^{}_{\mkern-3mu \eta}
 	\, := \, \hat{p}^{}_{\! s}
 	~.
 $$
@@ -600,19 +600,19 @@ $$
 	\boldsymbol{\dot{p}}^\alpha
 	\, = \, \boldsymbol{f}^\alpha
 	\, - \, \bigg(
-		\dfrac{p^{}_{\! \eta}}{Q}
+		\dfrac{p^{}_{\mkern-3mu \eta}}{Q}
 	\bigg) \, \boldsymbol{p}^\alpha
 	~,
 	\qquad\quad
 	\dot{\eta}
-	\, = \, \dfrac{p^{}_{\! \eta}}{Q}
+	\, = \, \dfrac{p^{}_{\mkern-3mu \eta}}{Q}
 	~,
 $$
 
 and
 
 $$
-	\dot{p}^{}_{\! \eta}
+	\dot{p}^{}_{\mkern-3mu \eta}
 	\, = \, \sum_{\alpha = 1}^N \dfrac{\boldsymbol{p}^\alpha \boldsymbol{\cdot} \boldsymbol{p}^\alpha}{m}
 	\, - \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
 	~.
@@ -633,7 +633,7 @@ $$
 	\qquad
 	\text{and}
 	\qquad
-	p^{}_{\! \eta} (t)
+	p^{}_{\mkern-3mu \eta} (t)
 $$
 
 at a set of discrete and uniformly spaced *real* times
@@ -647,7 +647,7 @@ The practical consequences of this formulation are significant, and the above eq
 ## Ergodicity, time averages, and the value of $$ g $$
 
 Recall that in MD simulations, the expectation value of a generic phase variable $$ B (\boldsymbol{\Gamma}) $$ is calculated as a time average.
-This value is assumed to be equal to the ensemble average with the ergodic hypothesis.
+This value is assumed to be equal to the ensemble average with the [ergodic hypothesis][Ergodic_hypothesis]{:target="_blank"}.
 Thus, for a fictitious system evolved in the scaled time $$ \hat{t} $$, we expect
 
 $$
@@ -780,7 +780,7 @@ rather than the previously determined value of $$ 3N + 1 $$, which is appropriat
 ## Additional insights
 
 With the Nosé--Hoover equations expressed in terms of the real time $$ t $$, we can draw additional insights about the dynamics of the extended system.
-First, the quantity $$ (p^{}_{\! \eta} / Q) $$ acts as a drag coefficient: each physical particle feels an additional force $$ - (p^{}_{\! \eta} / Q) \boldsymbol{p}^\alpha $$ due to the heat bath.
+First, the quantity $$ (p^{}_{\mkern-3mu \eta} / Q) $$ acts as a drag coefficient: each physical particle feels an additional force $$ - (p^{}_{\mkern-3mu \eta} / Q) \boldsymbol{p}^\alpha $$ due to the heat bath.
 In this case, however, the drag coefficient dynamically evolves in time and can be either positive or negative.
 Moreover, recall from the [equipartition thoerem][Equipartition_theorem]{:target="_blank"} that
 
@@ -801,10 +801,10 @@ $$
 	~.
 $$
 
-For a system of $$ N $$ particles with no global constraints on the dynamics, $$ N_{\mathrm{DOFs}} = 3N $$, for which the dynamical equation governing $$ p^{}_{\! \eta} $$ can be written as
+For a system of $$ N $$ particles with no global constraints on the dynamics, $$ N_{\mathrm{DOFs}} = 3N $$, for which the dynamical equation governing $$ p^{}_{\mkern-3mu \eta} $$ can be written as
 
 $$
-	\dot{p}^{}_{\! \eta}
+	\dot{p}^{}_{\mkern-3mu \eta}
 	\, = \, N_{\mathrm{DOFs}} \Big(
 		k_{\mathrm{B}} \mkern1mu T(t)
 		\, - \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}}
@@ -820,7 +820,7 @@ We thus observe a simple physical interpretation for the drag force, which affec
 We note that in situations with periodic boundary conditions in all three directions, the total linear momentum of the system is conserved.
 In this case, $$ N_{\mathrm{DOFs}} = 3 N - 3 = g $$.
 The latter equality arises because the integration over phase space involves $$ N - 1 $$ vector momenta, rather than $$ N $$.
-Thus, the above equation for $$ \dot{p}^{}_{\! \eta} $$ remains valid.
+Thus, the above equation for $$ \dot{p}^{}_{\mkern-3mu \eta} $$ remains valid.
 
 We close by noting that the Nosé equations can be derived from the fictitious Hamiltonian $$ \mathcal{H} (\boldsymbol{\hat{q}}^\alpha, \boldsymbol{\hat{p}}^\alpha, \hat{s}, \hat{p}^s) $$.
 However, the same is **not** true for the Nosé--Hoover equations, in which the fundamental variables are the real (rather than fictitious) particle positions and momenta.
@@ -833,7 +833,7 @@ $$
 	\, + \, U \big(
 		\{\boldsymbol{q}^\alpha\}
 	\big)
-	\, + \, \dfrac{p^2_{\! \eta}}{2 Q}
+	\, + \, \dfrac{p^2_{\mkern-3mu \eta}}{2 Q}
 	\, + \, g \, k_{\mathrm{B}} \mkern1mu T_{\mathrm{ext}} \, \eta
 	~,
 $$
@@ -869,8 +869,9 @@ In the meantime, we recommend the excellent textbook by Allen and Tildesley.[^re
 [Canonical_partition_function]: https://en.wikipedia.org/wiki/Partition_function_(statistical_mechanics)#Canonical_partition_function
 [Degrees_of_freedom]: https://en.wikipedia.org/wiki/Degrees_of_freedom_(physics_and_chemistry)
 [Dirac_delta_function]: https://en.wikipedia.org/wiki/Dirac_delta_function
-[Equipartition_theorem]: https://en.wikipedia.org/wiki/Equipartition_theorem
 [Ensemble_average]: https://en.wikipedia.org/wiki/Ensemble_(mathematical_physics)#Ensemble_average
+[Equipartition_theorem]: https://en.wikipedia.org/wiki/Equipartition_theorem
+[Ergodic_hypothesis]: https://en.wikipedia.org/wiki/Ergodic_hypothesis
 [Gaussian_integral]: https://en.wikipedia.org/wiki/Gaussian_integral
 [Gaussian_quadrature]: https://en.wikipedia.org/wiki/Gaussian_quadrature
 [Generalized_momentum]: https://en.wikipedia.org/wiki/Momentum#Generalized
