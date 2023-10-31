@@ -4,7 +4,7 @@ title: Sahu Lab
 ---
 
 We are a theoretical research group in the [Chemical Engineering Department](https://che.utexas.edu/){:target="_blank"} at [UT Austin](https://www.utexas.edu){:target="_blank"}.
-We broadly focus on understanding various systems over many length and time scales.
+We broadly focus on understanding various soft and living matter systems over many length and time scales.
 In doing so, a motivating question arises:
 How do microscopic interactions lead to emergent physics at mesoscopic or macroscopic scales?
 <br>
