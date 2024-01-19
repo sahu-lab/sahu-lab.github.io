@@ -20,16 +20,16 @@ The [(micro)state][Microstate]{:target="_blank"} of a classical system is captur
 
 $$
 	\boldsymbol{\Gamma}
-	\, := \, \big\{\mkern1mu
+	\, := \, \Big(\mkern1mu
 		\boldsymbol{q}^1, \,
 		\boldsymbol{q}^2, \,
 		\ldots \,
-		\boldsymbol{q}^N; \
+		\boldsymbol{q}^N, \
 		\boldsymbol{p}^1, \,
 		\boldsymbol{p}^2, \,
 		\ldots \,
 		\boldsymbol{p}^N
-	\mkern1mu\big\}
+	\mkern1mu\Big)
 	~.
 $$
 
