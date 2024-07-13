@@ -1,0 +1,38 @@
+---
+title: Teaching
+head_title: teaching
+layout: page
+permalink: /teaching/
+---
+
+# Numerical Methods in Chemical Engineering
+
+> __Welcome to *CHE 348: Numerical Methods in Chemical Engineering* in Fall 2024!__
+
+The significant increase in available compute over the last several decades has lead to a transformation in the methods and techniques for solving science and engineering
+problems. To use new tools effectively, it is crucial that we understand their *theoretical underpinnings* and *limitations,* as well as *practical details of their implementation.*
+
+__CHE 348__ is a one-semester advanced undergraduate course providing students with a fundamental understanding of *common numerical methods* spanning
+
+* chemical engineering,
+* computational science, and
+* applied mathematics.
+
+In problems studied, __the underlying physics is emphasized throughout,__ with principles from __*non-dimensionalization*__ frequently employed.
+
+While the ideas presented are general (and thus not tied to any specific programming language), the entirety of the course will be carried out in [Julia](https://julialang.org/)—a powerful, easy-to-use language designed for scientists and engineers.
+
+
+## Lectures
+
+- L01: Taylor series
+- L02: Linear algebra
+
+
+## Problem Sets
+
+- PS01
+- PS02
+
+
+

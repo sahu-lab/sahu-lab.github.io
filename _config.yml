@@ -38,6 +38,7 @@ plugins:
 # Custom navigation links
 header_pages:
   - blog.md
+  - teaching.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
