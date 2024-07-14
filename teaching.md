@@ -25,8 +25,8 @@ While the ideas presented are general (and thus not tied to any specific program
 
 ## Lectures
 
-- L01: Taylor series
-- L02: Linear algebra
+- [L01: Taylor series](che348/l01-taylor-series.html)
+- [L02: Linear algebra](che348/l02-linear-algebra.html)
 
 
 ## Problem Sets
