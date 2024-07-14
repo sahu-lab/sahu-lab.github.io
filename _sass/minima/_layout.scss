@@ -22,6 +22,10 @@
   &:visited {
     color: $grey-color-dark;
   }
+
+	> img {
+		width: $base-line-height * $base-font-size * 1.5;
+	}
 }
 
 .site-nav {
