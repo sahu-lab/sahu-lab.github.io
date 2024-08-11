@@ -4,10 +4,14 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 3839ea7d-2de4-48dd-9002-767afa5c0b61
-using Plots
+# ╔═╡ a636dddc-609c-464d-bc2d-1aa931e4e99e
+begin
+	using Plots
+	using LaTeXStrings
+	using SpecialFunctions
+end
 
-# ╔═╡ 8a4e56fd-e98c-4022-bf9a-e76c3e64fda6
+# ╔═╡ 1308e788-528b-4b0c-8960-c6a30fc5b367
 md"""
 ### Initializing packages
 
@@ -15,362 +19,610 @@ md"""
 Hang in there!*
 """
 
-# ╔═╡ ca8ff74a-e249-4587-9d52-a7434b59e688
+# ╔═╡ 8a892cbc-4d15-11ef-2301-93501311bbf7
 md"""
+# Integral Calculus
 
-# Introduction
-
-> __Welcome to *CHE 348: Numerical Methods in Chemical Engineering* in Fall 2024!__
-
-The significant increase in available compute over the last several decades has lead to a transformation in the methods and techniques for solving science and engineering
-problems. To use new tools effectively, it is crucial that we understand their *theoretical underpinnings* and *limitations,* as well as *practical details of their implementation.*
-
-__CHE 348__ is a one-semester advanced undergraduate course providing students with a fundamental understanding of *common numerical methods* spanning
-
-* chemical engineering,
-* computational science, and
-* applied mathematics.
-
-In problems studied, __the underlying physics is emphasized throughout,__ with principles from __*non-dimensionalization*__ frequently employed.
-
-While the ideas presented are general (and thus not tied to any specific programming language), the entirety of the course will be carried out in [Julia](https://julialang.org/)—a powerful, easy-to-use language designed for scientists and engineers.
-
-
-## Administrative items
-
-Lectures will be uploaded to the
-[course website](https://sahu-lab.github.io),
-and problem sets will be submitted via
-[canvas](https://utexas.instructure.com/courses/1385450)
-
-In the discussion section yesterday (26 Aug.), you should have
-[downloaded](https://julialang.org/downloads/)
-Julia, installed it along with the
-[Pluto](https://plutojl.org/)
-package.
-[Video instructions](https://computationalthinking.mit.edu/Fall23/installation/)
-are provided to aid you in this.
-
-
-## Starting with Julia
-
-Launch the __REPL__ and verify that Julia is installed appropriately.
-You should be able to do the following on your machine:
-
-"""
-
-# ╔═╡ 1fa787ef-324f-4cca-b5b7-f270f84a974b
-1 + 1
-
-# ╔═╡ 6f72cf27-57f7-490d-b076-1fc368577fe2
-π * 2
-
-# ╔═╡ 8a7e706c-1934-42f8-8a7b-9f2b102ce2ec
-md"""
-
-# T01: Taylor series
-
-## Review
-
-The [Taylor series](https://en.wikipedia.org/wiki/Taylor_series) is often said to be the most important concept from calculus.
-From [Wikipedia](https://en.wikipedia.org/wiki/Taylor_series):
-
-> The Taylor series of a function is an infinite sum of terms that are expressed in terms of the function's derivatives at a single point. For most common functions, the function and the sum of its Taylor series are equal near this point.
-
-Consider a function
-$$f(y)$$,
-where
-$$y \in \mathbb{C}$$
-and
-$$f \in \mathbb{C}$$,
-for which one could write
+As you learned in calculus, integrals are the natural counterpart to derivatives.
+In one dimension, let $$f(y) \in \mathbb{R}$$ by a continuous function defined on the interval $$a \le y \le b$$.
+Over this interval, define $$F(y)$$ to be
 ```math
-\begin{aligned}
-f(y)
-\, &= \, f(y_0)
-\, + \, f'(y_0) \, (y - y_0)
-\, + \, \dfrac{1}{2!} f''(y_0) \, (y - y_0)^2
-\, + \, \ldots
-\\[5pt]
-\, &= \, \sum_{n = 0}^\infty \dfrac{1}{n!} \, \dfrac{\mathrm{d}^n f(y)}{\mathrm{d} y^n} \bigg\rvert_{y = y_0} \big(y - y_0 \big)^{\! n}
-~.
-\end{aligned}
-```
-The Taylor series yields many of the relations you have seen in the past.
-For example,
-```math
-\mathrm{e}^y
-\, = \, 1
-\, + \, y
-\, + \, \dfrac{y^2}{2!}
-\, + \, \dfrac{y^3}{3!}
-\, + \, \ldots
-```
-
-!!! question "Practice Question"
-    What value is the above series expaned about?
-
-"""
-
-# ╔═╡ f35c69f2-74c5-4001-a3f6-4d10e96ad4df
-md"""
-## Numerical approximation
-
-In a computer, one cannot sum an infinite number of terms.
-A __[truncation error](https://en.wikipedia.org/wiki/Truncation_error)__ arises because only a finite number of terms are included.
-
-Let use __*define*__ the function $$\tilde{f} (y \, ; y_0, M)$$ as the truncated polynomial series of order $$M$$, written as
-```math
-\tilde{f} (y \,; y_0, M)
-\, := \, \sum_{n = 0}^M \dfrac{1}{n!} \, \dfrac{\mathrm{d}^n f(y)}{\mathrm{d} y^n} \bigg\rvert_{y = y_0} \big(y - y_0 \big)^{\! n}
-~.
-```
-
-!!! question "Practice Question"
-    How many terms are in $$\tilde{f} (y \, ; y_0, M)$$?
-
-!!! question "Practice Question"
-    What is the highest-order polynomial term in $$\tilde{f} (y \, ; y_0, M)$$?
-
-Let us now use the exponential function as an example.
-To this end, we *choose*
-```math
-f(y)
-\, = \, \mathrm{e}^y
+F(y)
+\ \equiv \, \int_a^y f(s) \, \mathrm{d}s
 ~,
 ```
-for which
+where
+$$s \in \mathbb{R}$$
+is a dummy variable.
+The [fundamental theorem of calculus](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus) then tells us that
 ```math
-\tilde{f} (y \, ; y_0 = 0, M)
-\, := \, 1
-\, + \, y
-\, + \, \dfrac{y^2}{2!}
-\, + \, \dfrac{y^3}{3!}
-\, + \, \ldots
-\, + \, \dfrac{y^M}{M!}
+\dfrac{\mathrm{d} F(y)}{\mathrm{d} y} \bigg\rvert_{\bar{y}}
+\, = \ f(\bar{y})
+\qquad
+\forall \quad \bar{y} \in (a, b)
 ~.
 ```
----
----
-"""
-
-# ╔═╡ 3687516a-5a63-45c9-a2c9-415c706f45bb
-md"""
-### Example
-
-Supposed we are tasked with calculating $$\tilde{f} (0.2 \, ; y_0 = 0, M = 3)$$.
-"""
-
-# ╔═╡ 3f635ff2-481c-4ac7-b3b7-14a28b3042c6
-1 + 0.2 + 0.2^2/2 + 0.2^3/6
-
-# ╔═╡ b4669b9d-0846-49f6-a7eb-3f8ca31a25df
-md"""
-How does this compare to the actual value of the function?
-"""
-
-# ╔═╡ 9cb651da-8e08-479a-81e8-24de523c145e
-ℯ^0.2
-
-# ╔═╡ f6c91ba4-661e-4b6c-8722-de27e36f0e24
-exp(0.2)
-
-# ╔═╡ fc8dd886-86e3-4c2d-9f3e-490b04c8e369
-md"""
-What is the truncation error that arises?
-"""
-
-# ╔═╡ 1536fbc1-0c35-4cdb-b663-9ae7fe0771f0
-abs(ℯ^0.2 - (1 + 0.2 + 0.2^2/2 + 0.2^3/6))
-
-# ╔═╡ f2646139-cd94-425f-b517-4e1208fbdb71
-md"""
----
----
-"""
-
-# ╔═╡ b86837f1-2301-4ffb-92f9-890e0bd4e69f
-md"""
-Analytically, we denote the truncation error—sometimes called the [__*residual*__](https://en.wikipedia.org/wiki/Residual_(numerical_analysis))—as $$r(y \, ; y_0, M)$$, which is defined to be
+As a consequence, if $$F(y)$$ is known then definite integrals of the function $$f$$ are evaluated as
 ```math
-\begin{aligned}
-r(y \, ; y_0, M)
-\, :=& \  \big\lvert
-f(y)
-\, - \, \tilde{f} (y \, ; y_0, M)
-\big\rvert
-\\[4pt]
-\,  =& \, \sum_{n = M + 1}^\infty \dfrac{1}{n!} \, \dfrac{\mathrm{d}^n f(y)}{\mathrm{d} y^n} \bigg\rvert_{y = y_0} \big(y - y_0 \big)^{\! n}
+\int_a^c f(y) ~ \mathrm{d} y
+\ = \ F(c)
+~,
+```
+for any
+$$c \in [a, b]$$.
+
+> Note that
+> ```math
+> F(a)
+> \ = \, \int_a^a f(y) ~ \mathrm{d}y
+> \ = \ 0
+> ~.
+> ```
+> We can thus understand $$F(c)$$ as the solution to the differential equation
+> ```math
+> \dfrac{\mathrm{d} F(y)}{\mathrm{d} y}
+> \ = \ f(y)
+> \qquad
+> \text{with}
+> \qquad
+> F(a)
+> \, = \, 0
+> ~,
+> ```
+> evaluated at
+> $$y = c$$.
+
+An extension of the fundamental theorem of calculus is the [Leibniz integral rule](https://en.wikipedia.org/wiki/Leibniz_integral_rule), sometimes referred to as "differentiating under the integral sign" or "Feynman's trick" (after the physicist [Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman), who had a [reputation](https://kconrad.math.uconn.edu/blurbs/analysis/diffunderint.pdf) for being able to evaluate complicated integrals).
+Imagine a time-dependent scenario where the bounds of the integral, and the function itself, depend on time—for which (see [time evolution of integrals](https://en.wikipedia.org/wiki/Time_evolution_of_integrals))
+```math
+\dfrac{\mathrm{d}}{\mathrm{d} t} \int_{a(t)}^{b(t)}
+\! f(x, t)
+~ \mathrm{d} x
+\ = \, \int_{a(t)}^{b(t)}
+\dfrac{\partial f(x, t)}{\partial t}
+~ \mathrm{d} x
+\ + \ \dfrac{\mathrm{d} b(t)}{\mathrm{d} t} \, f \big( b(t), t \big)
+\ - \ \dfrac{\mathrm{d} a(t)}{\mathrm{d} t} \, f \big( a(t), t \big)
 ~.
-\end{aligned}
 ```
+Such integrals arise often in the study of [fluid mechanics](https://en.wikipedia.org/wiki/Fluid_mechanics) and [transport phenomena](https://en.wikipedia.org/wiki/Transport_phenomena), where the presence of a flow causes the domain of integration to be time-dependent (see, for example, the [Reynolds transport theorem](https://en.wikipedia.org/wiki/Reynolds_transport_theorem)).
 
-Notice that if the $$n^{\text{th}}$$ derivative of the function $$f$$ is "of order unity," i.e. it is relatively constant for all $$n$$, then as $$n$$ increases the $$n!$$ in the denominator will become larger than the $$(y - y_0)^n$$ in the numerator.
-When using Taylor series, we are generally concerned with how large the residual is for a given choice of $$y_0$$ and $$M$$.
-
-> __*You will investigate this dependence in Problem Set 1*__
-
-Note that you could, in principle, calculate all these errors—for many different choices of $$y_0$$ and $$M$$— one by one.
-However, these sorts of repetitive tasks are much more conveniently done with a computer!
-Let us begin to see how to do so.
-"""
-
-# ╔═╡ 6fbf3bb2-61d2-4f55-a0f3-8a05ef6095e7
-md"""
-## Numerical implementation
-
-Let us begin by __storing__ relevant information into __variables__.
-As a rough approximation, one can think of a computer as doing one of three things:
-- storing data
-- computing with data
-- displaying data
-"""
-
-# ╔═╡ d0225810-052b-480b-895c-16732badbf84
-y = 0.2
-
-# ╔═╡ 7cac38d1-0524-4e66-8bc5-87bc5708ec4d
-M = 3
-
-# ╔═╡ f2fcef8a-e753-488a-a09a-be6c473755e8
-f_exact = ℯ^y
-
-# ╔═╡ 363e3ad3-c1ce-4a6c-8113-96e170bfca7a
-f_approx = 1 + y + y^2/2 + y^3/6
-
-# ╔═╡ 444ecadf-c50d-4fb9-bf9c-ca3c90abe0f7
-residual = abs(f_exact - f_approx)
-
-# ╔═╡ a9b6fcd4-9a8e-4d0d-bd13-e0dc318adbd3
-md"""
-So far, our calculation of `f_approx` does not use the value of `M` that we set.
-There is an easy way for us to tell the computer to __span__ a range of values!
-```julia
-# the following code executes a "for loop"
-# notice that lines starting with "#" are comments (they are not executed)
-
-for n = 0:M
-    println(n)
-end
+The fundamental theorem of calculus can be understood as a special case of the [divergence theorem](https://en.wikipedia.org/wiki/Divergence_theorem), which you learned in multivariable calculus.
+Imagine a physical scenario in three dimensions where some fector field
+$$\boldsymbol{j} \in \mathbb{R}^3$$
+depends on the position
+$$\boldsymbol{x} \in \mathbb{R}^3$$
+and possibly the time $$t$$.
+Let
+$$V \subset \mathbb{R}^3$$
+be a specified volume, with a bounding surface $$S$$ that has an outward-pointing unit normal $$\boldsymbol{\hat{n}}$$.
+In $$\mathbb{R}^3$$, the divergence theorem can be stated as
+```math
+\int_V \big(
+\boldsymbol{\nabla} \boldsymbol{\cdot} \boldsymbol{j}
+\big) ~ \mathrm{d} V
+\ = \, \int_S \, \boldsymbol{j} \boldsymbol{\cdot} \boldsymbol{\hat{n}} ~ \mathrm{d} S
+~,
 ```
+where
+$$\boldsymbol{\nabla} \boldsymbol{\cdot} \boldsymbol{j} = \partial j_x / \partial x + \partial j_y / \partial y + \partial j_z / \partial z$$
+is the [divergence](https://en.wikipedia.org/wiki/Divergence) of $$\boldsymbol{j}$$.
+Notice that the left-hand side above is a *volume integral,* and so to evaluate it one must sum up quantities in the entire volume $$V$$.
+Conversely, the right-hand side is a *surface integral,* and necessitates adding up quantities only on the surface $$S$$.
+Though the two expressions are equivalent, different calculations are often more amenable to one form or the other.
+
 """
 
-# ╔═╡ 395b20fe-7ddf-4b83-8e55-ed1a06714b49
-for n = 0:M
-	println(n)
-end
-
-# ╔═╡ 16fd3897-0b76-47a8-8253-6e267cbd9960
+# ╔═╡ 2b080b28-f54f-4b6f-b63f-d9795619f73c
 md"""
-!!! info "Objective"
-    Use a `for` loop to calculate `f_approx`, which works for different values of `M`
+
+## Integrals in chemical engineering
+
+Integrals will arise in your study of physical phenomena.
+For example, consider the (molar) concentration $$c^{}_j(\boldsymbol{x}, t)$$ of the $$j^{\text{th}}$$ chemical species in a chemical reactor.
+One can quantify how the concentration varies in both time and space, but it is sometimes also useful to keep track of the total number of moles $$N_j$$ of this species in the reactor.
+By integrating over space, we find
+```math
+N_j (t)
+\, = \, \int_V c^{}_j (\boldsymbol{x}, t) \, \mathrm{d} V
+~,
+```
+where $$V$$ is the volume of the reactor.
+Notice that *since we integrated over the position,* $$N_j$$ *is __only a function of time!__*
+
+The partial differential equations describing chemical reactions are often quite complicated.
+In your transport courses, you will learn how one needs to solve for the velocity $$\boldsymbol{v} (\boldsymbol{x}, t)$$ of the fluid in a reactor, as well as the temperature $$\theta (\boldsymbol{x}, t)$$ and concentration $$c_j (\boldsymbol{x}, t)$$ of each chemical species.
+Often, the equations are nonlinear and can only be solved numerically (we will learn how to do so later on).
+Suppose for now that someone has gone through the arduous process of solving for all these unknown fields.
+How would you use this information to answer the following question?
+
+!!! question "Real-World Question"
+	Suppose someone has given you a numerical solution for the temperature $$\theta (\boldsymbol{x}, t)$$ in a chemical reactor.
+	How would you determine the total rate of heat that is transferred from the reactor to its surroundings?
+
 """
 
-# ╔═╡ 98d6e55e-a63b-411c-b7cb-e5dd15e686f9
-function calc_f_approx(y, M)
-	f_approx = 0.0;
-	for n = 0:M
-		f_approx = f_approx + y^n / factorial(n);
-	end
-	return f_approx;
-end
-
-# ╔═╡ 3078d320-678d-4bb6-9742-4f3720bca392
-function calc_f_residual(y, M)
-	return abs(ℯ^y - calc_f_approx(y, M));
-end
-
-# ╔═╡ a1735f28-8cd3-4784-9686-b567e28b857a
-calc_f_approx(0.2, 3)
-
-# ╔═╡ 268ee3a6-ece9-4c3f-a5bd-c1ea2835ce21
-abs(ℯ^0.2 - calc_f_approx(0.2, 3))
-
-# ╔═╡ 0a8968f6-323e-4e17-b1aa-0560f78d7cde
-calc_f_residual(0.2, 15)
-
-# ╔═╡ 6c753149-f441-48a8-b947-3d23f1cd30ae
+# ╔═╡ 90a1d85b-7c83-42f5-bb0f-0d8b6ac14f12
 md"""
-!!! info "Objective"
-    Plot the approximate calculation of $$e^{0.2}$$, based on the Taylor series expansion, as a function of `M`—where `M` goes from `1` to `6`
+
+## Numerical integration
+
+Suppose we have a known function $$f(y)$$, and we seek to numerically determine the integral
+```math
+I
+\ = \, \int_a^b f(y) ~\mathrm{d} y
+~.
+```
+An example of such a function is provided below, and suppose we choose
+$$a = 0$$
+and
+$$b = 6$$.
+
 """
 
-# ╔═╡ 4786c577-85ea-44f6-8a93-5c9e6233eb70
-function plot_f_approx(y, M_max)
-	M_array = 1:M_max;
-	f_approx_array = calc_f_approx.(y, M_array);
+# ╔═╡ ad716e30-7756-42c1-bc76-cf56fd3d9a6a
+function f1(y::Number)::Number
+	return ℯ^(-y^2);
+end
 
+# ╔═╡ e6f8f2ac-e786-420d-b715-c95fd67cff65
+function I1_exact(a::Number, b::Number)::Number
+	return  erf(a, b) * √pi / 2
+end
+
+# ╔═╡ afb4da76-8c05-4986-bc8e-6ddec8a830df
+a = 0
+
+# ╔═╡ 33ef2c0c-8d3b-4257-aeab-4a6167d25aec
+b = 6
+
+# ╔═╡ 1879ec72-176c-465c-bb24-f665d69ff679
+f1(a)
+
+# ╔═╡ 812728f0-125e-46d5-8ae0-c2ce8a272a05
+f1(b)
+
+# ╔═╡ b311b964-29da-4947-a753-27c698e283d2
+begin
+	y_array = range(start=a, stop=b/2, length=100);
+	f1_array = f1.(y_array);
 	Plots.plot(
-		M_array,                                  # x values
-		f_approx_array,                           # y values
-		title = "Taylor series approximation",    # plot title
-		label = "f_approx(0.2, M)",               # legend
-		xlabel = "M",                             # x-axis label
-		ylabel = "f_approx",                      # y-axis label
-		line=(2, :darkorange3),                   # line width and color
-		marker=(:circle, 5, :darkorange3),        # marker shape, size, and color
+		y_array,
+		f1_array,
+		label=L"e^{-y^2}",
+		line=(3, :darkorange3),
 	)
 end
 
-# ╔═╡ 133c3077-80f3-4515-a7e5-dfc3d56eb12f
-plot_f_approx(0.2, 6)
-
-# ╔═╡ 56e12061-2cbf-4c38-914e-7c75ffb9f33e
+# ╔═╡ b7762997-34f4-4ee4-833d-a40fc51852f7
 md"""
-!!! question "How do we plot the Taylor series approximation in a more useful way?"
-    Notice that the above plot is not particularly helpful, because we cannot easily observe that our estimate of $$e^{0.2}$$ is better for larger `M`.
-    __*In the first problem set, you will find better ways to plot the error.*__
+
+Recall that the integral of a scalar function $$f(y)$$ over the domain $$[a, b]$$ is the area under the curve.
+
+> To evaluate the integral __*numerically,*__ we calculate the area under an __*approximation*__ to $$f(y)$$, based on a __*discretization*__ of the domain.
+
+To this end, let us partition the interval $$[a, b]$$ into $$N$$ elements of equal length $$h$$, where
+$$h = (b - a) / N$$.
+The $$j^{\text{th}}$$
+element, where
+$$j = 1, 2, \ldots, N$$,
+spans
+```math
+y \in [y^{(j)}_{\text{left}}, y^{(j)}_{\text{right}}]
+~,
+\qquad
+\text{where}
+\qquad
+y^{(j)}_{\text{left}}
+\, = \, a + h (j - 1)
+\qquad
+\text{and}
+\qquad
+y^{(j)}_{\text{right}}
+\, = \, a + h j
+~.
+```
+Our task then is to approximate the integral over a single element:
+```math
+I^{(j)}
+\, \equiv \, \int_{y^{(j)}_{\text{left}}}^{y^{(j)}_{\text{right}}} f(y) ~ \mathrm{d}y
+~.
+```
+Notice that the total integral $$I$$ is the sum of each element integral, which we can express as
+```math
+I = \sum_{j = 1}^N I^{(j)}
+~.
+```
+
+!!! info "Important Observation"
+	Any numerical integration method will get more accurate as $$N$$ increases and
+	$$h \rightarrow 0$$.
+	However, we are now concerned with the approximation of $$I^{(j)}$$, for which $$h$$ is fixed!
+
+We will now go over two common techniques, before showing how various methods are derived.
+
+> [Click here](https://www.sfu.ca/math-coursenotes/Math%20158%20Course%20Notes/sec_Numerical_Integration.html) for a useful reference, with visuals
+
+
 """
 
-# ╔═╡ 1756de61-190e-4926-8c81-d5b7e9d6de10
-calc_f_residual(0.2, 9)
-
-# ╔═╡ 8837fb56-f8a6-4152-9e50-bd3f465bbb02
-calc_f_residual(0.2, 10)
-
-# ╔═╡ 40f12b03-98f0-4b13-b240-141f17146037
-calc_f_residual(0.2, 11)
-
-# ╔═╡ 6083bfe2-79e6-4f2d-b511-bb904d4d6838
-calc_f_residual(0.2, 12)
-
-# ╔═╡ 17da61cf-ce3f-4d92-8537-81eaf35a927a
-calc_f_residual(0.2, 20)
-
-# ╔═╡ f43442e6-8ca3-4def-b8d0-ac3a325ddd3b
+# ╔═╡ f5e17720-1243-4e4a-987b-c915f63a71e0
 md"""
-!!! question "Why does our error stop decreasing?"
-    Notice that after a certain value of `M` (11 in this case), the residual does not continue to decrease—even though we would naively expect it to, as we are including more terms in the Taylor series.
-    How are these two observations consistent?
 
-> __Only a finite amount of memory__ is allocated for any variable, which means that *__very__ small changes to a variable will not be recorded!*
-> This is the concept of [machine precision](https://en.wikipedia.org/wiki/Machine_epsilon), which will be talked about in discussion section #3.
-> As a preview, compare the "error floor" above with the value of $$2^{-52}$$ below.
-> 
-> *Note: this agreement is specific to how your computer stores numbers; in my case I have a 64-bit machine.*
+### Midpoint rule
+
+Approximate the integral over an element by the function evaluated at the center of the element, multiplied by the element width:
+```math
+\int_{y^{}_{\text{left}}}^{y^{}_{\text{right}}} f(y) ~ \mathrm{d}y
+\ \approx \ \big(
+y^{}_{\text{right}}
+\, - \, y^{}_{\text{left}}
+\big) \cdot f \bigg(
+\dfrac{
+y^{}_{\text{right}}
+\, + \, y^{}_{\text{left}}
+}{2}
+\bigg)
+```
 """
 
-# ╔═╡ 08e0e572-edb6-4524-97fe-41efb437cd8c
-2^-52
+# ╔═╡ af877474-199f-4183-ba20-64015a964c57
+function I1_element_midpoint_error(
+	f::Function, I::Function, y_left::Number, h::Number
+)
+	y_right = y_left + h;
+	I1_element_midpoint = h * f((y_right + y_left)/2);
+	I1_element_exact = I(y_left, y_right);
+	return abs(I1_element_exact - I1_element_midpoint);
+end
 
-# ╔═╡ 12084602-3a09-47f3-864b-55cbac042795
+# ╔═╡ eb19c188-d24c-465a-9869-46f383d495b1
+begin
+	h_array = [10.0^(-i/2) for i=1:5];
+	midpoint_error_array = I1_element_midpoint_error.(f1, I1_exact, 1.5, h_array);
+	Plots.plot(
+		1 ./ h_array,
+		[midpoint_error_array h_array.^3],
+		label=["error" L"h^3"],
+		xlabel=L"1/h",
+		ylabel=L"r^{}_{\! h}",
+		xscale=:log10,
+		yscale=:log10,
+		title="Midpoint rule element error",
+		minorgrid=true,
+		line=(2, [:darkorange3 :deepskyblue3], [:solid :dash]),
+		marker=(:circle, [5 0], [:darkorange3 :deepskyblue3]),
+	)
+end
+
+# ╔═╡ 030da53f-006b-4726-9f89-a49b1e6f9e85
 md"""
-## References
 
-The following are some useful references, in case you want to learn more.
-This list is not exhaustive, as there are many great resources!
-- [3Blue1Brown](https://youtu.be/3d6DsjIBzJ4)
-- [Wikipedia](https://en.wikipedia.org/wiki/Taylor_series)
-- [Wolfram MathWorld](https://mathworld.wolfram.com/TaylorSeries.html)
+### Trapezoidal rule
+
+Approximate the area under the curve as a trapezoid, set by the values at the ends of the element:
+```math
+\int_{y^{}_{\text{left}}}^{y^{}_{\text{right}}} f(y) ~ \mathrm{d}y
+\ \approx \ \big(
+y^{}_{\text{right}}
+\, - \, y^{}_{\text{left}}
+\big) \cdot \dfrac{1}{2} \, \Big[
+f (y^{}_{\text{right}})
+\, + \, f (y^{}_{\text{left}})
+\Big]
+~.
+```
+
+"""
+
+# ╔═╡ 092a56b4-2f53-4226-bd31-76fb5e3ebca6
+function I1_element_trapezoid_error(
+	f::Function, I::Function, y_left::Number, h::Number
+)
+	y_right = y_left + h;
+	I1_element_trapezoid = h * (f(y_right) + f(y_left)) / 2;
+	I1_element_exact = I(y_left, y_right);
+	return abs(I1_element_exact - I1_element_trapezoid);
+end
+
+# ╔═╡ e35bb5b1-1d25-4b02-b719-04f6906119ae
+begin
+	trapezoid_error_array = I1_element_trapezoid_error.(f1, I1_exact, 1.5, h_array);
+	Plots.plot(
+		1 ./ h_array,
+		[trapezoid_error_array h_array.^3],
+		label=["error" L"h^3"],
+		xlabel=L"1/h",
+		ylabel=L"r^{}_{\! h}",
+		xscale=:log10,
+		yscale=:log10,
+		title="Trapezoid rule element error",
+		minorgrid=true,
+		line=(2, [:darkorange3 :deepskyblue3], [:solid :dash]),
+		marker=(:circle, [5 0], [:darkorange3 :deepskyblue3]),
+	)
+end
+
+# ╔═╡ d75cb39c-63e3-4326-b03b-17300c2dd15a
+md"""
+### Simpson's rule
+
+Approximate the curve as a parabola, which is fit to the values of the function:
+```math
+\int_{y^{}_{\text{left}}}^{y^{}_{\text{right}}} f(y) ~ \mathrm{d}y
+\ \approx \ \big(
+y^{}_{\text{right}}
+\, - \, y^{}_{\text{left}}
+\big) \cdot \dfrac{1}{6} \, \bigg[
+f (y^{}_{\text{right}})
+\, + \, 4 \, f \bigg(
+\dfrac{
+y^{}_{\text{right}}
+\, + \, y^{}_{\text{left}}
+}{2}
+\bigg)
+\, + \, f (y^{}_{\text{left}})
+\bigg]
+~.
+```
+
+"""
+
+# ╔═╡ c910a697-6844-4863-949e-6dfbc95c0804
+function I1_element_simpson_error(
+	f::Function, I::Function, y_left::Number, h::Number
+)
+	y_right = y_left + h;
+	I1_element_simpson = h * (f(y_right) + 4*f((y_right+y_left)/2) + f(y_left)) / 6;
+	I1_element_exact = I(y_left, y_right);
+	return abs(I1_element_exact - I1_element_simpson);
+end
+
+# ╔═╡ 8c43b1c9-8938-4c7d-8418-d14f752e2549
+begin
+	simpson_error_array = I1_element_simpson_error.(f1, I1_exact, 1.5, h_array);
+	Plots.plot(
+		1 ./ h_array,
+		[simpson_error_array 0.01*h_array.^5],
+		label=["error" L"0.01 \, h^5"],
+		xlabel=L"1/h",
+		ylabel=L"r^{}_{\! h}",
+		xscale=:log10,
+		yscale=:log10,
+		title="Simpson's rule element error",
+		minorgrid=true,
+		line=(2, [:darkorange3 :deepskyblue3], [:solid :dash]),
+		marker=(:circle, [5 0], [:darkorange3 :deepskyblue3]),
+	)
+end
+
+# ╔═╡ 5c28e027-199e-4562-b578-668487863dcc
+md"""
+!!! info "Observation"
+	By making a seemingly small change in going from the trapezoidal rule to Simpson's rule, the error now goes to zero __*significantly more quickly!*__
+
+!!! question "Question"
+	How do we understand the error of the midpoint, trapezoidal, and Simpson rules?
+	How was Simpson's rule derived, and how do we come up with even more accurate integration methods?
+
+!!! info "Observation"
+	We calculated the error for integrating across a single element, of width $$h$$.
+	When determining the total integral from $$y = a$$ to $$y = b$$, remember there are
+	$$N = (b - a) / h$$
+	elements.
+	Thus, we expect the total error to scale as $$N$$ multiplied by the element error, for which the __*error scaling*__ will go down by one order.
+
+"""
+
+# ╔═╡ 90f3f5c5-6171-4866-a1aa-a56b6f408105
+md"""
+## Error analysis: Midpoint rule
+
+Recall that we split an integral from
+$$y = a$$
+to
+$$y = b$$
+into the sum of $$N$$ integrals, and then came up with approximations of the integral of each element.
+For the midpoint rule, we found
+```math
+\begin{aligned}
+\int_a^b f(y) ~\textrm{d}y
+\ &= \ \sum_{j = 1}^N \ \int_{a + h(j - 1)}^{a + hj} f(y) ~\textrm{d} y
+\\[8pt]
+\ &\approx \ \sum_{j = 1}^N \, h \, f \bigg(
+\dfrac{[a + hj] + [a + h(j - 1)]}{2}
+\bigg)
+\\[8pt]
+\ &= \ \sum_{j = 1}^N \, h \, f \big(
+a
+\, + \, h j
+\, - \, \tfrac{h}{2}
+\big)
+~.
+\end{aligned}
+```
+We want to determine the __*error*__ in the midpoint rule.
+Notice that there will be an error over each element, and so the total error (or residual), which we denote $$r^{}_h$$, will be the sum of the element errors $$r^{(j)}_h$$:
+```math
+r^{}_h
+\, = \, \sum_{j = 1}^N \, r^{(j)}_h
+~.
+```
+Our task now is to approximate $$r^{(j)}_h$$, which can be calculated as
+```math
+r^{(j)}_h
+\ = \ \bigg\{
+\int_{a + h(j - 1)}^{a + hj} f(y) ~\textrm{d} y \,
+\bigg\} \ - \  h \, f \big(
+a
+\, + \, h j
+\, - \, \tfrac{h}{2}
+\big)
+~.
+```
+To simplify the calculation, let's introduce a change of variables:
+```math
+w
+\, \equiv \, y
+\, - \, \big[a + h(j - 1)\big]
+\quad
+\text{for which}
+\quad
+\textrm{d}w
+\, = \, \textrm{d}y
+~.
+```
+In addition, let us define another function, which depends on the variable $$w$$:
+```math
+\tilde{f}(w)
+\, \equiv \, f(y)
+~.
+```
+The element error can then be expressed as
+```math
+r^{(j)}_h
+\ = \ \bigg\{
+\int_0^h f(w) ~\textrm{d} w \,
+\bigg\} \ - \  h \, \tilde{f} \big( \tfrac{h}{2} \big)
+~.
+```
+At this point, we Taylor expand $$\tilde{f} (w)$$ about
+$$w = \tfrac{h}{2}$$
+and obtain
+```math
+\tilde{f} (w)
+\, = \, \tilde{f} (\tfrac{h}{2})
+\, + \, \big( w - \tfrac{h}{2} \big) \, \tilde{f}'(\tfrac{h}{2})
+\, + \, \dfrac{1}{2} \, \big( w - \tfrac{h}{2} \big)^2 \, \tilde{f}''(\tfrac{h}{2})
+\, + \, \ldots
+~.
+```
+Substituting the Taylor series into the element error yields
+```math
+\begin{aligned}
+r^{(j)}_h
+\ &= \ \bigg\{
+\int_0^h
+\Big[
+\tilde{f} (\tfrac{h}{2})
+\, + \, \big( w - \tfrac{h}{2} \big) \, \tilde{f}'(\tfrac{h}{2})
+\, + \, \dfrac{1}{2} \, \big( w - \tfrac{h}{2} \big)^2 \, \tilde{f}''(\tfrac{h}{2})
+\, + \, \ldots
+\Big]
+~\textrm{d} w \,
+\bigg\} \ - \  h \, \tilde{f} \big( \tfrac{h}{2} \big)
+\end{aligned}
+~.
+```
+
+
+
+### Calculating term-wise integrals
+
+Let us consider the integral one term at a time.
+We first determine
+```math
+\int_0^h
+\tilde{f} (\tfrac{h}{2})
+~\textrm{d} w
+\ = \ \tilde{f} (\tfrac{h}{2}) \, \int_0^h ~\textrm{d} w
+\ = \ h \, \tilde{f} (\tfrac{h}{2})
+~,
+```
+since $$\tilde{f} (\tfrac{h}{2})$$ is a constant.
+
+> __*Notice that the result of this integral cancels the right-most term in the error expression, which arose from the midpoint rule!*__
+
+For the second term, we calculate
+```math
+\begin{aligned}
+\int_0^h
+\big( w - \tfrac{h}{2} \big) \, \tilde{f}'(\tfrac{h}{2})
+~\textrm{d} w
+\ &= \ \tilde{f}'(\tfrac{h}{2}) \, \int_0^h
+\big( w - \tfrac{h}{2} \big)
+~\textrm{d} w
+\\[8pt]
+\ &= \ \tilde{f}'(\tfrac{h}{2}) \, \bigg[
+\dfrac{1}{2} \, \big( w - \tfrac{h}{2} \big)^2
+\bigg]_0^h
+\\[8pt]
+\ &= \ \tilde{f}'(\tfrac{h}{2}) \, \bigg[
+\dfrac{1}{2} \, \bigg( \dfrac{h^2}{4} \, - \, \dfrac{h^2}{4} \bigg)
+\bigg]
+\\[8pt]
+\ &= \ 0
+~.
+\end{aligned}
+```
+Notice that one could recognize the integral is zero from symmetry, as we are integrating a linear function (which is odd about $$\tfrac{h}{2}$$) about a domain that is symmetric about $$\tfrac{h}{2}$$.
+Next, we integrate the quadratic term:
+```math
+\begin{aligned}
+\int_0^h
+\dfrac{1}{2} \, \big( w - \tfrac{h}{2} \big)^2 \, \tilde{f}''(\tfrac{h}{2})
+~\textrm{d} w
+\ &= \ \dfrac{1}{2} \, \tilde{f}''(\tfrac{h}{2}) \, \int_0^h
+\big( w - \tfrac{h}{2} \big)^2
+~\textrm{d} w
+\\[8pt]
+\ &= \ \dfrac{1}{2} \, \tilde{f}''(\tfrac{h}{2}) \, \bigg[
+\dfrac{1}{3} \, \big( w - \tfrac{h}{2} \big)^3
+\bigg]^h_0
+\\[8pt]
+\ &= \ \dfrac{1}{2} \, \tilde{f}''(\tfrac{h}{2}) \, \bigg[
+\dfrac{h^3}{24}
+\, - \, \dfrac{-h^3}{24}
+\bigg]
+\\[8pt]
+\ &= \ \dfrac{h^3}{24} \, \tilde{f}''(\tfrac{h}{2})
+~.
+\end{aligned}
+```
+
+
+
+### Putting it all together
+
+At this point, we take all the pieces of the integral and substitute into the error expression, from which we find
+```math
+r^{(j)}_h
+\, = \, \dfrac{h^3}{24} \, \tilde{f}''(\tfrac{h}{2})
+\, + \, \ldots
+~,
+```
+which tells us that the __*scaling*__ of the element error is given by
+```math
+r^{(j)}_h
+\, = \, \mathcal{O} (h^3)
+~.
+```
+
+!!! info "Important Observation"
+	This scaling agrees with that found in our numerical implementation!
+
+Since there are $$N = (b - a) / h$$ elements, we expect the total error to scale as
+$$h^3 N = h^2 (b - a)$$,
+for which
+```math
+r^{}_h
+\, = \, \mathcal{O} (h^2)
+~.
+```
+
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 
 [compat]
+LaTeXStrings = "~1.3.1"
 Plots = "~1.40.4"
+SpecialFunctions = "~2.4.0"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -379,7 +631,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "8b2c9c3d46d6008e64a548b5d46b7f4df5906e20"
+project_hash = "d896420480b96b102ec94fa93b339fe2890a3b5b"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
@@ -431,12 +683,10 @@ deps = ["ColorTypes", "FixedPointNumbers", "LinearAlgebra", "Requires", "Statist
 git-tree-sha1 = "a1f44953f2382ebb937d60dafbe2deea4bd23249"
 uuid = "c3611d14-8923-5661-9e6a-0046d554d3a4"
 version = "0.10.0"
+weakdeps = ["SpecialFunctions"]
 
     [deps.ColorVectorSpace.extensions]
     SpecialFunctionsExt = "SpecialFunctions"
-
-    [deps.ColorVectorSpace.weakdeps]
-    SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 
 [[deps.Colors]]
 deps = ["ColorTypes", "FixedPointNumbers", "Reexport"]
@@ -874,6 +1124,12 @@ git-tree-sha1 = "3da7367955dcc5c54c1ba4d402ccdc09a1a3e046"
 uuid = "458c3c95-2e84-50aa-8efc-19380b2a3a95"
 version = "3.0.13+1"
 
+[[deps.OpenSpecFun_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "13652491f6856acfd2db29360e1bbcd4565d04f1"
+uuid = "efe28fd5-8261-553b-a9e1-b2916fc3738e"
+version = "0.5.5+0"
+
 [[deps.Opus_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "51a08fb14ec28da2ec7a927c4337e4332c2a4720"
@@ -1040,6 +1296,18 @@ version = "1.2.1"
 deps = ["Libdl", "LinearAlgebra", "Random", "Serialization", "SuiteSparse_jll"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 version = "1.10.0"
+
+[[deps.SpecialFunctions]]
+deps = ["IrrationalConstants", "LogExpFunctions", "OpenLibm_jll", "OpenSpecFun_jll"]
+git-tree-sha1 = "2f5d4697f21388cbe1ff299430dd169ef97d7e14"
+uuid = "276daf66-3868-5448-9aa4-cd146d93841b"
+version = "2.4.0"
+
+    [deps.SpecialFunctions.extensions]
+    SpecialFunctionsChainRulesCoreExt = "ChainRulesCore"
+
+    [deps.SpecialFunctions.weakdeps]
+    ChainRulesCore = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
 
 [[deps.Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
@@ -1427,47 +1695,29 @@ version = "1.4.1+1"
 """
 
 # ╔═╡ Cell order:
-# ╟─8a4e56fd-e98c-4022-bf9a-e76c3e64fda6
-# ╠═3839ea7d-2de4-48dd-9002-767afa5c0b61
-# ╟─ca8ff74a-e249-4587-9d52-a7434b59e688
-# ╠═1fa787ef-324f-4cca-b5b7-f270f84a974b
-# ╠═6f72cf27-57f7-490d-b076-1fc368577fe2
-# ╟─8a7e706c-1934-42f8-8a7b-9f2b102ce2ec
-# ╟─f35c69f2-74c5-4001-a3f6-4d10e96ad4df
-# ╟─3687516a-5a63-45c9-a2c9-415c706f45bb
-# ╠═3f635ff2-481c-4ac7-b3b7-14a28b3042c6
-# ╟─b4669b9d-0846-49f6-a7eb-3f8ca31a25df
-# ╠═9cb651da-8e08-479a-81e8-24de523c145e
-# ╠═f6c91ba4-661e-4b6c-8722-de27e36f0e24
-# ╟─fc8dd886-86e3-4c2d-9f3e-490b04c8e369
-# ╠═1536fbc1-0c35-4cdb-b663-9ae7fe0771f0
-# ╟─f2646139-cd94-425f-b517-4e1208fbdb71
-# ╟─b86837f1-2301-4ffb-92f9-890e0bd4e69f
-# ╟─6fbf3bb2-61d2-4f55-a0f3-8a05ef6095e7
-# ╠═d0225810-052b-480b-895c-16732badbf84
-# ╠═7cac38d1-0524-4e66-8bc5-87bc5708ec4d
-# ╠═f2fcef8a-e753-488a-a09a-be6c473755e8
-# ╠═363e3ad3-c1ce-4a6c-8113-96e170bfca7a
-# ╠═444ecadf-c50d-4fb9-bf9c-ca3c90abe0f7
-# ╟─a9b6fcd4-9a8e-4d0d-bd13-e0dc318adbd3
-# ╠═395b20fe-7ddf-4b83-8e55-ed1a06714b49
-# ╟─16fd3897-0b76-47a8-8253-6e267cbd9960
-# ╠═98d6e55e-a63b-411c-b7cb-e5dd15e686f9
-# ╠═3078d320-678d-4bb6-9742-4f3720bca392
-# ╠═a1735f28-8cd3-4784-9686-b567e28b857a
-# ╠═268ee3a6-ece9-4c3f-a5bd-c1ea2835ce21
-# ╠═0a8968f6-323e-4e17-b1aa-0560f78d7cde
-# ╟─6c753149-f441-48a8-b947-3d23f1cd30ae
-# ╠═4786c577-85ea-44f6-8a93-5c9e6233eb70
-# ╠═133c3077-80f3-4515-a7e5-dfc3d56eb12f
-# ╟─56e12061-2cbf-4c38-914e-7c75ffb9f33e
-# ╠═1756de61-190e-4926-8c81-d5b7e9d6de10
-# ╠═8837fb56-f8a6-4152-9e50-bd3f465bbb02
-# ╠═40f12b03-98f0-4b13-b240-141f17146037
-# ╠═6083bfe2-79e6-4f2d-b511-bb904d4d6838
-# ╠═17da61cf-ce3f-4d92-8537-81eaf35a927a
-# ╟─f43442e6-8ca3-4def-b8d0-ac3a325ddd3b
-# ╠═08e0e572-edb6-4524-97fe-41efb437cd8c
-# ╟─12084602-3a09-47f3-864b-55cbac042795
+# ╠═a636dddc-609c-464d-bc2d-1aa931e4e99e
+# ╟─1308e788-528b-4b0c-8960-c6a30fc5b367
+# ╟─8a892cbc-4d15-11ef-2301-93501311bbf7
+# ╟─2b080b28-f54f-4b6f-b63f-d9795619f73c
+# ╟─90a1d85b-7c83-42f5-bb0f-0d8b6ac14f12
+# ╠═ad716e30-7756-42c1-bc76-cf56fd3d9a6a
+# ╟─e6f8f2ac-e786-420d-b715-c95fd67cff65
+# ╠═afb4da76-8c05-4986-bc8e-6ddec8a830df
+# ╠═33ef2c0c-8d3b-4257-aeab-4a6167d25aec
+# ╠═1879ec72-176c-465c-bb24-f665d69ff679
+# ╠═812728f0-125e-46d5-8ae0-c2ce8a272a05
+# ╠═b311b964-29da-4947-a753-27c698e283d2
+# ╟─b7762997-34f4-4ee4-833d-a40fc51852f7
+# ╟─f5e17720-1243-4e4a-987b-c915f63a71e0
+# ╠═af877474-199f-4183-ba20-64015a964c57
+# ╠═eb19c188-d24c-465a-9869-46f383d495b1
+# ╟─030da53f-006b-4726-9f89-a49b1e6f9e85
+# ╠═092a56b4-2f53-4226-bd31-76fb5e3ebca6
+# ╠═e35bb5b1-1d25-4b02-b719-04f6906119ae
+# ╟─d75cb39c-63e3-4326-b03b-17300c2dd15a
+# ╠═c910a697-6844-4863-949e-6dfbc95c0804
+# ╠═8c43b1c9-8938-4c7d-8418-d14f752e2549
+# ╟─5c28e027-199e-4562-b578-668487863dcc
+# ╟─90f3f5c5-6171-4866-a1aa-a56b6f408105
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

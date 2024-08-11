@@ -254,10 +254,10 @@ C = [1 0; 0 0]
 b1 = C * p1
 
 # ╔═╡ 72b2bdc0-f98b-4a91-8bfc-eb0c60a72cd9
-Plots.quiver([0], [0], quiver=([p1[1]], [p1[2]]), color=:blue)
+Plots.quiver([0], [0], quiver=([p1[1]], [p1[2]]), line=(2, :darkorange))
 
 # ╔═╡ 447dfa42-d620-4b71-9f1a-782aae7b9721
-Plots.quiver!([0], [0], quiver=([b1[1]], [b1[2]]), color=:red)
+Plots.quiver!([0], [0], quiver=([b1[1]], [b1[2]]), line=(2, :deepskyblue3))
 
 # ╔═╡ 5a299b0e-9529-43b8-88b1-f594fe5b7572
 points = [2 3 6 4 1 3 9 7; 1 2 3 6 2 3 1 6]
@@ -266,10 +266,10 @@ points = [2 3 6 4 1 3 9 7; 1 2 3 6 2 3 1 6]
 proj_points = C * points
 
 # ╔═╡ 8d28af9f-cf2f-4cfc-b9cc-b654267f6a10
-Plots.quiver(0*points[1,:], 0*points[1,:], quiver=(points[1,:], points[2,:]), color=:blue)
+Plots.quiver(0*points[1,:], 0*points[1,:], quiver=(points[1,:], points[2,:]), line=(2, :darkorange))
 
 # ╔═╡ 64a17ae4-cd86-4765-8bc1-bedc4eab202c
-Plots.quiver!(0*points[1,:], 0*points[1,:], quiver=(proj_points[1,:], proj_points[2,:]), color=:red)
+Plots.quiver!(0*points[1,:], 0*points[1,:], quiver=(proj_points[1,:], proj_points[2,:]), line=(2, :deepskyblue3))
 
 # ╔═╡ 6fa3c1d9-30e5-4682-ba05-98fe9cff6e49
 md"""
@@ -546,7 +546,8 @@ Plots.quiver(
 	label = "data",
 	xlabel = "x",
 	ylabel = "y",
-	lw = 3,
+	color = :darkorange,
+	linewidth = 2,
 )
 
 # ╔═╡ 9736882e-3d01-44cf-ac27-7f6e2bf09ae1
@@ -560,7 +561,7 @@ Plots.plot(
 	[0, Δt * num_steps],
 	rad2deg(atan(0.5)) * [1, 1],
 	label="limit",
-	ls=:dash
+	line=(1, :deepskyblue3, :dash),
 );
 
 # ╔═╡ 0f6906ee-e88c-444d-b8cf-d6c6dc81785a
@@ -574,6 +575,7 @@ Plots.plot!(
 	lw=3,
 	xlims=[0, Δt * num_steps],
 	ylims=[0, 180],
+	line=(3, :darkorange),
 )
 
 # ╔═╡ f5064bfe-c51c-40d0-a86e-70f0910a19aa

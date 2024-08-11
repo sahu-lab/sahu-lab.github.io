@@ -64,7 +64,7 @@ One can then calculate how the temperature changes if you take a small step in e
 \dfrac{\partial \theta (x, y, z)}{\partial z}
 ~.
 ```
-Now, suppose we are initial standing at the position $$\boldsymbol{\bar{x}}$$ and we take an infinitesimally small step
+Now, suppose we are initially standing at the position $$\boldsymbol{\bar{x}}$$ and we take an infinitesimally small step
 $$\mathrm{d} \boldsymbol{x} = \mathrm{d} x \boldsymbol{e}_x \, + \, \mathrm{d} y \boldsymbol{e}_y \, + \, \mathrm{d} z \boldsymbol{e}_z$$,
 which could have components in each of the Cartesian directions.
 Since the step is small, we can __Taylor expand__ the temperature $$\theta$$ about the point $$\boldsymbol{\bar{x}}$$ to find
@@ -283,12 +283,14 @@ function plot_residual_h(f::Function, df_exact::Function)
 		yscale=:log10,
 		minorgrid=true,
 		ls=:dot,
-		seriestype=:scatter
+		seriestype=:scatter,
+		color=:darkorange3
 	);
 	Plots.plot!(
 		1 ./ h_array,
 		h_array .* 6,
 		label=L"6 h",
+		color=:deepskyblue3
 	)
 end
 
