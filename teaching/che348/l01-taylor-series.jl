@@ -39,7 +39,7 @@ While the ideas presented are general (and thus not tied to any specific program
 ## Administrative items
 
 Lectures will be uploaded to the
-[course website](https://sahu-lab.github.io),
+[course website](https://sahu-lab.github.io/teaching/che348/),
 and problem sets will be submitted via
 [canvas](https://utexas.instructure.com/courses/1385450)
 
@@ -68,7 +68,7 @@ You should be able to do the following on your machine:
 # ╔═╡ 8a7e706c-1934-42f8-8a7b-9f2b102ce2ec
 md"""
 
-# T01: Taylor series
+# Taylor series
 
 ## Review
 
@@ -108,7 +108,7 @@ For example,
 ```
 
 !!! question "Practice Question"
-    What value is the above series expaned about?
+    What value is the above series expanded about?
 
 """
 
