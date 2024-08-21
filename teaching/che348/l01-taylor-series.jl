@@ -22,7 +22,7 @@ md"""
 
 > __Welcome to *CHE 348: Numerical Methods in Chemical Engineering* in Fall 2024!__
 
-The significant increase in available compute over the last several decades has lead to a transformation in the methods and techniques for solving science and engineering
+The significant increase in available compute over the last several decades has led to a transformation in the methods and techniques for solving science and engineering
 problems. To use new tools effectively, it is crucial that we understand their *theoretical underpinnings* and *limitations,* as well as *practical details of their implementation.*
 
 __CHE 348__ is a one-semester advanced undergraduate course providing students with a fundamental understanding of *common numerical methods* spanning
@@ -304,7 +304,7 @@ function plot_f_approx(y, M_max)
 		M_array,                                  # x values
 		f_approx_array,                           # y values
 		title = "Taylor series approximation",    # plot title
-		label = "f_approx(0.2, M)",               # legend
+		label = "f_approx(y, M)",                 # legend
 		xlabel = "M",                             # x-axis label
 		ylabel = "f_approx",                      # y-axis label
 		line=(2, :darkorange3),                   # line width and color
