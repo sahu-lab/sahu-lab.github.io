@@ -722,6 +722,11 @@ where
 
 """
 
+# ╔═╡ 8adec8d7-7ffb-4793-aa19-b129fdff815c
+html"""
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O85OWBJ2ayo?si=tSGLLQL6VNic3UZ3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+"""
+
 # ╔═╡ 25f3957a-cab7-4b2e-a5d2-e3a8a232c1dd
 md"""
 ### Understanding the dynamical system
@@ -1928,7 +1933,7 @@ version = "1.4.1+1"
 # ╟─e6c54e21-957b-48be-9d34-359919e68b97
 # ╠═68069bb5-bc21-4c63-9c7b-3d536fdee614
 # ╟─ce628378-8aae-4e0a-8f3b-fc942802b928
-# ╟─b43484ec-7f1d-4cd2-a3ef-4c2817df355c
+# ╠═b43484ec-7f1d-4cd2-a3ef-4c2817df355c
 # ╟─ce1f0e8a-a311-4c78-9f3a-b762cd976c47
 # ╟─32d34be3-2205-4d70-b65b-1a3d0578f2b7
 # ╠═f9f77a50-3676-45ee-99ee-425b07a8f1e7
@@ -1971,6 +1976,7 @@ version = "1.4.1+1"
 # ╠═6bfc02a9-5b02-4842-885b-9cee8bc3bd18
 # ╠═0f6906ee-e88c-444d-b8cf-d6c6dc81785a
 # ╟─f5064bfe-c51c-40d0-a86e-70f0910a19aa
+# ╟─8adec8d7-7ffb-4793-aa19-b129fdff815c
 # ╟─25f3957a-cab7-4b2e-a5d2-e3a8a232c1dd
 # ╟─11ddbdaa-031a-48a6-af2a-0cc24bec294a
 # ╠═fb609efa-365d-45ee-9893-2d2daefa94e1
