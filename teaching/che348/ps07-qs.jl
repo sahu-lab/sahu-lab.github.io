@@ -6,7 +6,7 @@ using InteractiveUtils
 
 # ╔═╡ 53a7e44d-c430-4eba-b7a6-43c593ed2dea
 md"""
-# Q2. Van der Waals fluid (continued) $$\textcolor{red}{\texttt{[16]}}$$
+# Q2. Van der Waals fluid (continued) $$\textcolor{red}{\texttt{[18]}}$$
 
 In the written portion of this problem set, you investigated some properties of the van der Waals fluid.
 We will continue to analyze some of its properties, but now with numerical methods.
@@ -61,7 +61,7 @@ md"""
 
 At the three temperatures you chose above, plot $$\partial p / \partial v$$ using the function you wrote above.
 All the curves should be in a single plot.
-What qualitative difference do you see the derivative, between temperatures above $$T_{\text{c}}$$ and temperatures below $$T_{\text{c}}$$?
+What qualitative difference do you see in the derivative, between temperatures above $$T_{\text{c}}$$ and temperatures below $$T_{\text{c}}$$?
 
 """
 
@@ -77,10 +77,10 @@ These are called **_spinodal points._**
 
 # ╔═╡ c284bd64-c687-40a0-81d0-9b7443052813
 md"""
-## Plotting the spinodal points $$\textcolor{red}{\texttt{[4]}}$$
+## Plotting the spinodal points $$\textcolor{red}{\texttt{[6]}}$$
 
 In the exercise above, you considered a single temperature and found two volumes corresponding to spinodal points.
-Now, sweep through many temperatures ranging between $$0$$ and $$T_{\text{c}}$$ to generate the so-called __spinodal curve__ in the pressure--volume plane.
+Now, sweep through many temperatures ranging between $$T = 0.11$$ and $$T = T_{\text{c}}$$ to generate the so-called __spinodal curve__ in the pressure--volume plane.
 In plotting the spinodal curve, you do not need to note the temperature at which the values were found.
 An example can be seen in the black, dash-dotted line in the figure below.
 
