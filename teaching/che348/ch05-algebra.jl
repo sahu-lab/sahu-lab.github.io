@@ -565,6 +565,150 @@ md"""
 
 """
 
+# ╔═╡ c408d331-7b47-4433-ac15-c9b35d15451b
+md"""
+## Fixed-point iteration: Vector functions
+
+Let us now extend our analysis to vector equations, for which the bisection method cannot be applied.
+In particular, we would like to solve the nonlinear system of equations
+```math
+\boldsymbol{f} (\boldsymbol{y})
+\, = \, \boldsymbol{0}
+~,
+```
+where $$\boldsymbol{y} \in \mathbb{R}^N$$ and $$\boldsymbol{f} \in \mathbb{R}^N$$.
+Once again, we add $$\boldsymbol{y}$$ to both sides and define
+```math
+\boldsymbol{g} (\boldsymbol{y})
+\, \equiv \, \boldsymbol{y}
+\, + \, \boldsymbol{f} (\boldsymbol{y})
+~,
+```
+for which we seek the fixed point $$\boldsymbol{\bar{y}}$$ that satisfies
+```math
+\boldsymbol{\bar{y}}
+\, = \, \boldsymbol{g} (\boldsymbol{\bar{y}})
+~.
+```
+As in the scalar case, we generate a sequence $$\{ \boldsymbol{y}^{}_1, \boldsymbol{y}^{}_2, \ldots, \boldsymbol{y}^{}_N  \}$$ where
+```math
+\boldsymbol{y}^{}_{n+1}
+\, = \, \boldsymbol{g} (\boldsymbol{y}^{}_{n})
+~,
+```
+and we hope that
+```math
+\lim_{n \rightarrow \infty} \boldsymbol{y}^{}_n
+\, = \, \boldsymbol{\bar{y}}
+~.
+```
+
+### Analysis
+
+As before, we begin by assuming that at some step $$n$$, the quantity $$\boldsymbol{y}^{}_n$$ is close to the true solution $$\boldsymbol{\bar{y}}$$.
+By Taylor expanding $$\boldsymbol{g}(\boldsymbol{y}^{}_n)$$ about $$\boldsymbol{\bar{y}}$$ and keeping only the linear term, we obtain
+```math
+\boldsymbol{y}^{}_{n+1}
+\, = \, \boldsymbol{g}(\boldsymbol{y}^{}_n)
+\, \approx \, \boldsymbol{g}(\boldsymbol{\bar{y}})
+\, + \, \boldsymbol{J} \rvert_{\boldsymbol{\bar{y}}} \big(
+\boldsymbol{y}^{}_{n}
+\, - \, \boldsymbol{\bar{y}}
+\big)
+~,
+```
+where $$\boldsymbol{J} = \partial \boldsymbol{g} / \partial \boldsymbol{y}$$ is the Jacobian matrix.
+
+!!! info "What information do we know?"
+    Note that in the above Taylor series, we calculate the Jacobian matrix at the fixed point $$\boldsymbol{\bar{y}}$$.
+	However, since we don't __a priori__ know what $$\boldsymbol{\bar{y}}$$ is, we don't know what $$\boldsymbol{J}$$ is!
+	Nonetheless, we only rely on the idea that $$\boldsymbol{J}$$ exists.
+
+By defining
+```math
+\boldsymbol{r}^{}_n
+\, \equiv \, \boldsymbol{y}^{}_n
+\, - \, \boldsymbol{\bar{y}}
+~,
+```
+we rearrange terms in the above Taylor series to find
+```math
+\boldsymbol{r}^{}_{n+1}
+\, = \, \boldsymbol{J} \, \boldsymbol{r}^{}_n
+~.
+```
+Our goal is to determine under what conditions $$\boldsymbol{r}^{}_n \rightarrow \boldsymbol{0}$$ as $$n \rightarrow \infty$$.
+We start by recognizing
+```math
+\boldsymbol{r}^{}_{n}
+\, = \, \boldsymbol{J} \, \boldsymbol{r}^{}_{n-1}
+\, = \, \boldsymbol{J}^2 \, \boldsymbol{r}^{}_{n-2}
+\, = \, \ldots
+\, = \, \boldsymbol{J}^n \, \boldsymbol{r}^{}_{0}
+~,
+```
+where $$\boldsymbol{r}^{}_{0}$$ is the residual from our initial guess.
+Although we don't know what the initial residual is (since we don't know the fixed point), and we don't know what $$\boldsymbol{J}$$ is when evaluated at $$\boldsymbol{\bar{y}}$$, we can still expand $$\boldsymbol{r}^{}_{0}$$ as a linear combination of the eigenvalues $$\{ \boldsymbol{v}_j \}$$ of the Jacobian matrix $$\boldsymbol{J}$$:
+```math
+\boldsymbol{r}^{}_{0}
+\, = \, \sum_{j = 1}^N \alpha_j \, \boldsymbol{v}_j
+~.
+```
+At this point, let us apply one of the Jacobian matrices to our expansion for $$\boldsymbol{r}^{}_{0}$$:
+```math
+\begin{aligned}
+\boldsymbol{r}^{}_{n}
+\, = \, \boldsymbol{J}^n \, \boldsymbol{r}^{}_{0}
+\, &= \, \boldsymbol{J}^n \, \bigg(
+\sum_{j = 1}^N \alpha_j \, \boldsymbol{v}_j
+\bigg)
+~,
+\\[4pt]
+\, &= \, \boldsymbol{J}^{n-1} \, \boldsymbol{J} \, \bigg(
+\sum_{j = 1}^N \alpha_j \, \boldsymbol{v}_j
+\bigg)
+~,
+\\[4pt]
+\, &= \, \boldsymbol{J}^{n-1} \, \bigg(
+\sum_{j = 1}^N \alpha_j \, \boldsymbol{J} \, \boldsymbol{v}_j
+\bigg)
+~,
+\\[4pt]
+\, &= \, \boldsymbol{J}^{n-1} \, \bigg(
+\sum_{j = 1}^N \alpha_j \, \lambda_j \, \boldsymbol{v}_j
+\bigg)
+~.
+\end{aligned}
+```
+By continually repeating this procedure, we find
+```math
+\boldsymbol{r}^{}_{n}
+\, = \, \sum_{j = 1}^N \alpha_j \, (\lambda_j)^n \, \boldsymbol{v}_j
+~.
+```
+We would like to know whether $$\lim_{n \rightarrow \infty} ( \boldsymbol{r}^{}_{n} ) = \boldsymbol{0}$$, which would indicate that our series converges to the fixed point.
+In the above equation, the eigenvectors $$\{ \boldsymbol{v}_j \}$$ are some (unknown) constant vectors, and the coefficients $$\{ \alpha_j \}$$ are arbitrary constant coefficients related to the initial guess.
+Thus, in order for the series to converge to $$\boldsymbol{0}$$, we require
+```math
+\lim_{n \rightarrow \infty} \big( \lambda_j \big)^n
+\, = \, 0
+\qquad
+\text{for }
+j \in \{ 1, 2, \ldots, N \}
+~.
+```
+Regardless of whether the eigenvalues are real or complex, we find our fixed point iteration will be successful when
+```math
+\lvert \lambda_j \rvert
+\, < \, 1
+\qquad
+\text{for }
+j \in \{ 1, 2, \ldots, N \}
+~.
+```
+
+"""
+
 # ╔═╡ 5a9839f4-c23c-497c-ae15-cbc5041f975f
 md"""
 ## Newton–Raphson iteration
@@ -738,7 +882,7 @@ y_{n+1}
 ```
 We stop the iteration at a chosen tolerance, i.e. when
 ```math
-f(y_n)
+\lvert f(y_n) \rvert
 \, < \, \epsilon_{\text{tol}}
 ~.
 ```
@@ -754,6 +898,57 @@ md"""
 
 - requires a good initial guess ✖
 - requires calculation of the derivative ✖
+
+"""
+
+# ╔═╡ 6b8c8fbd-c3f5-4cde-ae93-caef5a81192c
+md"""
+## Newton--Raphson iteration: Vector functions
+
+Just as with fixed-point iteration, the Newton--Raphson method is easily extended to solve the vector equation
+```math
+\boldsymbol{f} ( \boldsymbol{y} )
+\, = \, \boldsymbol{0}
+~,
+```
+where $$\boldsymbol{y} \in \mathbb{R}^N$$ and $$\boldsymbol{f} \in \mathbb{R}^N$$.
+We once again generate a sequence $$\{ \boldsymbol{y}^{}_0, \boldsymbol{y}^{}_1, \boldsymbol{y}^{}_2, \ldots \}$$, where in this case $$\boldsymbol{y}^{}_{n+1}$$ is generated by linearizing the function $$\boldsymbol{f}$$ about $$\boldsymbol{y}^{}_n$$.
+More specifically, we Taylor expand to linear order to find
+```math
+\boldsymbol{f} ( \boldsymbol{y}^{}_{n+1} )
+\, \approx \, \boldsymbol{f} ( \boldsymbol{y}^{}_n )
+\, + \, \boldsymbol{J} \rvert_{\boldsymbol{y}^{}_n} \, \big(
+\boldsymbol{y}^{}_{n+1}
+\, - \, \boldsymbol{y}^{}_{n}
+\big)
+~.
+```
+__*If*__ the linear approximation was exact, then $$\boldsymbol{f} ( \boldsymbol{y}^{}_{n+1} ) = \boldsymbol{0}$$ and
+```math
+\boldsymbol{f} ( \boldsymbol{y}^{}_n )
+\, + \, \boldsymbol{J} \rvert_{\boldsymbol{y}^{}_n} \, \big(
+\boldsymbol{y}^{}_{n+1}
+\, - \, \boldsymbol{y}^{}_{n}
+\big)
+\, = \, \boldsymbol{0}
+~.
+```
+In this manner, we rearrange terms to solve for $$\boldsymbol{y}^{}_{n+1}$$ in terms of the (known) $$\boldsymbol{y}^{}_n$$:
+```math
+\boldsymbol{y}^{}_{n+1}
+\, = \, \boldsymbol{y}^{}_{n}
+\, - \, \big(
+\boldsymbol{J} \rvert_{\boldsymbol{y}^{}_n}
+\big)^{-1} \boldsymbol{f} ( \boldsymbol{y}^{}_n )
+~.
+```
+The above equation is the Newton--Raphson method, and allows us to determine $$\boldsymbol{y}^{}_{n+1}$$ from $$\boldsymbol{y}^{}_n$$.
+By starting with an initial guess $$\boldsymbol{y}^{}_0$$, we generate a sequence of progressively better iterations and stop when
+```math
+\lvert \boldsymbol{f} (\boldsymbol{y}^{}_n) \rvert
+\, < \, \epsilon^{}_{\text{tol}}
+~.
+```
 
 """
 
@@ -1897,6 +2092,7 @@ version = "1.4.1+1"
 # ╟─649991cf-b226-419a-9d58-54661214db0f
 # ╟─f2e90575-23f8-425b-b2df-fe792a62ada5
 # ╟─c7923532-c6d8-4666-878c-1bd2eb96e624
+# ╟─c408d331-7b47-4433-ac15-c9b35d15451b
 # ╟─5a9839f4-c23c-497c-ae15-cbc5041f975f
 # ╠═28a82140-a2a2-4c73-83cf-a7990ad25fde
 # ╠═ac82c457-854e-43db-801a-128bddb85c82
@@ -1914,5 +2110,6 @@ version = "1.4.1+1"
 # ╠═2bce9785-8583-46ad-8f1a-ea8d3d04ebe3
 # ╟─48d9d911-bf39-4495-ad15-31455087eae8
 # ╟─554653bd-0b1a-4655-92a4-a9ccfee288c4
+# ╟─6b8c8fbd-c3f5-4cde-ae93-caef5a81192c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
