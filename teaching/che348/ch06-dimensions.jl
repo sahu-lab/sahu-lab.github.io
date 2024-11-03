@@ -356,6 +356,161 @@ m \, \dfrac{\mathrm{d}^2 x}{\mathrm{d} t^2}
 !!! question "Dimensional analysis question"
 	What are the dimensions of the drag coefficient $\mu$?
 
+For a second-order differential equation, we require two boundary conditions.
+Let us choose
+```math
+x(0)
+\, = \, x_0
+\qquad
+\text{and}
+\qquad
+\dfrac{\mathrm{d} x}{\mathrm{d} t} (0)
+\, = \, 0
+~,
+```
+where $x_0$ is a known constant.
+We are interested in solving for $x(t)$, given four parameters: $m$, $\mu$, $k$, and $x_0$.
+We can once again ask if these four parameters independently affect the solution.
+
+Let us non-dimensionalize the problem by defining
+```math
+x^*
+\, = \, \dfrac{x}{x_0}
+\qquad
+\text{and}
+\qquad
+t^*
+\, = \, \dfrac{t}{\tau}
+~,
+```
+where for now $\tau$ is an unknown time scale.
+The boundary conditions simplify to
+```math
+x^* (0)
+\, = \, 1
+\qquad
+\text{and}
+\qquad
+\dfrac{\mathrm{d} x^*}{\mathrm{d} t^*} (0)
+\, = \, 0
+~.
+```
+Moreover, the governing differential equation can be expressed as
+```math
+\dfrac{m \, x_0}{\tau^2} \, \dfrac{\mathrm{d}^2 x^*}{\mathrm{d} (t^*)^2}
+\, + \, \dfrac{\mu \, x_0}{\tau} \, \dfrac{\mathrm{d} x^*}{\mathrm{d} t^*}
+\, + \, k \, x_0 \, x^*
+\, = \, 0
+~.
+```
+With some rearrangement, we find
+```math
+\dfrac{\mathrm{d}^2 x^*}{\mathrm{d} (t^*)^2}
+\, + \, \dfrac{\mu \, \tau}{m} \, \dfrac{\mathrm{d} x^*}{\mathrm{d} t^*}
+\, + \, \dfrac{k \, \tau^2}{m} \, x^*
+\, = \, 0
+~.
+```
+From here, there are two natural choices for the yet-to-be-specified time scale $\tau$:
+```math
+\tau^{}_1
+\, = \, \dfrac{m}{\mu}
+\qquad
+\text{and}
+\qquad
+\tau^{}_2
+\, = \, \sqrt{\dfrac{m}{k} \,}
+~.
+```
+The first timescale is the decay time if there was no spring, while the second timescale is the one we found earlier when considering the period of oscillations in the absence of any drag.
+We choose
+```math
+\tau
+\, = \, \tau^{}_2
+\, = \, \sqrt{\dfrac{m}{k} \,}
+~,
+```
+for which our differential equation simplifies to
+```math
+\dfrac{\mathrm{d}^2 x^*}{\mathrm{d} (t^*)^2}
+\, + \, \dfrac{\mu}{\sqrt{k \, m \,}} \, \dfrac{\mathrm{d} x^*}{\mathrm{d} t^*}
+\, + \, x^*
+\, = \, 0
+~.
+```
+Finally, for notational simplicity, we define
+```math
+\alpha
+\, \equiv \, \dfrac{\mu}{\sqrt{k \, m \,}}
+```
+as the ratio of timescales.
+Our governing equation and boundary conditions are then written as
+```math
+\dfrac{\mathrm{d}^2 x^*}{\mathrm{d} (t^*)^2}
+\, + \, \alpha \, \dfrac{\mathrm{d} x^*}{\mathrm{d} t^*}
+\, + \, x^*
+\, = \, 0
+~,
+```
+with
+```math
+x^* (0)
+\, = \, 1
+\qquad
+\text{and}
+\qquad
+\dfrac{\mathrm{d} x^*}{\mathrm{d} t^*} (0)
+\, = \, 0
+~.
+```
+We have thus found there is only a single relevant dimensionless parameter in this problem, as opposed the original four.
+
+As we will see in the next chapter, our numerical implementaitons will generally require the problem statement to be expressed as $\boldsymbol{\dot{y}} = \boldsymbol{f} (\boldsymbol{y})$.
+To this end, we define
+```math
+y_1
+\, \equiv \, x^*
+~,
+\qquad
+y_2
+\, \equiv \, \dfrac{\mathrm{d} x^*}{\mathrm{d} t^*}
+~,
+\qquad
+f_1 (y_1, y_2)
+\, \equiv \, y_2
+~,
+\qquad
+f_2 (y_1, y_2)
+\, \equiv \, - y_1
+\, - \, \alpha y_2
+~,
+```
+along with
+```math
+\boldsymbol{y}
+\, = \, \begin{bmatrix}
+y_1
+\\[4pt]
+y_2
+\end{bmatrix}
+\qquad
+\text{and}
+\qquad
+\boldsymbol{f} (\boldsymbol{y})
+\, = \, \begin{bmatrix}
+f_1 (y_1, y_2)
+\\[4pt]
+f_2 (y_1, y_2)
+\end{bmatrix}
+~.
+```
+The dynamics of the spring--mass--dampener system are then indeed given by
+```math
+\boldsymbol{\dot{y}}
+\, = \, \boldsymbol{f} (\boldsymbol{y})
+~.
+```
+
 """
 
 # ╔═╡ Cell order:
@@ -364,4 +519,4 @@ m \, \dfrac{\mathrm{d}^2 x}{\mathrm{d} t^2}
 # ╟─d675a8f6-9592-11ef-01b0-89d810b1964b
 # ╟─1481bceb-717f-4a40-b86a-3372116c6b67
 # ╟─b1d015b2-a908-490b-a527-695a85940a79
-# ╠═3d9b55e6-9868-4300-bad6-3110021caa41
+# ╟─3d9b55e6-9868-4300-bad6-3110021caa41
