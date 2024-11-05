@@ -4,6 +4,16 @@
 using Markdown
 using InteractiveUtils
 
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
+end
+
 # ╔═╡ bcfd453a-9b16-11ef-333b-f1b392f9e416
 begin
 	using Plots
@@ -65,7 +75,7 @@ We will cover the basic methods for doing so.
 # ╔═╡ d5347559-bc96-48c4-a803-d339762b13f9
 md"""
 
-## Forward Euler
+## Forward Euler (Explicit Euler)
 
 Consider the governing differential equation at a given instant in time, which we call $\bar{t}$:
 ```math
@@ -82,6 +92,10 @@ We approximate the derivative with the Taylor series:
 \Big)
 ~.
 ```
+
+!!! info "Observation"
+	Notice that to approximate the time derivative at time $\bar{t}$, we have chosen to use the value of $\boldsymbol{y}$ in the __future,__ or __forward__ in time—hence the name __forward Euler!__
+
 By substituting the numerical approximation into the differential equation, and then solving for $\boldsymbol{y}(\bar{t} + \Delta t)$, we obtain
 ```math
 \boldsymbol{y}(\bar{t} + \Delta t)
@@ -92,8 +106,9 @@ By substituting the numerical approximation into the differential equation, and 
 Importantly, the entire right-hand side of the above equation is known, as we (by construction) know $\boldsymbol{f}(\boldsymbol{y})$ and $\boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu)$.
 By repeating this procedure, we can solve for $\boldsymbol{y}(t)$ at any time!
 
-> This method id sometimes called *explicit Euler,* as it falls into the general category of explicit methods.
-> We will understand this terminology later.
+!!! info "Nomenclature"
+	This method is sometimes called *explicit Euler,* as it falls into the general category of explicit methods.
+	We will understand this terminology later.
 
 
 """
@@ -123,11 +138,81 @@ md"""
 
 """
 
+# ╔═╡ a97ba9c9-0f7e-41f7-b24c-c8abc6a8ee14
+@bind alpha Slider(0.1:0.1:4.0, default=1.0)
+
+# ╔═╡ c07407f1-e6b2-4afa-b195-89e113f18bff
+alpha
+
 # ╔═╡ ffd084c8-fb90-49f2-9e2c-0c5170347393
 function rhs(y)
-	alpha=0.5
 	return [y[2], -y[1]-alpha*y[2]]
 end
+
+# ╔═╡ cfb5e6ad-9bf8-42b9-8470-2837294aee7b
+begin
+	t_init = 0.0
+	t_final = 8*pi
+	num_times = 20000
+	dt = (t_final - t_init)/num_times
+	times = t_init:dt:t_final
+end
+
+# ╔═╡ 70ff01a2-19e7-4129-938a-acd8425b6b81
+y0 = [1.0, 0.0]
+
+# ╔═╡ 10e58e42-9efb-4850-9f7b-87ee26ae3a33
+ys_fe = ode_forward_euler(rhs, y0, t_init, t_final, num_times);
+
+# ╔═╡ 82803d66-4520-4d1e-97d5-3c8e8ff586dd
+Plots.plot(
+	times,
+	ys_fe[:,1],
+	yrange=(-1.1, 1.1),
+	xrange=(0.0, t_final)
+)
+
+# ╔═╡ 4877d644-2990-4225-b71b-ac171412d4f9
+md"""
+
+## Backward Euler (Implicit Euler)
+
+When solving the differential equation $\boldsymbol{\dot{y}} = \boldsymbol{f}(\boldsymbol{y})$ numerically, all of the error comes from the approximation of the derivative.
+Different methods use different approximations for the numerical derivative, and thus have different advantages and disadvantages.
+To come up with the backward Euler method, we approximate the derivative at time $t$ by going "backwards" in time:
+```math
+\dfrac{\text{d} \boldsymbol{y}}{\text{d} t} \bigg\rvert_{\bar{t}}
+\, \approx \, \dfrac{1}{\Delta t} \, \Big(
+\boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu)
+\, - \, \boldsymbol{y}(\bar{t} - \Delta t)
+\Big)
+~.
+```
+Upon substituting into the governing equation, we find
+```math
+\dfrac{1}{\Delta t} \, \Big(
+\boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu)
+\, - \, \boldsymbol{y}(\bar{t} - \Delta t)
+\Big)
+\, = \, \boldsymbol{f}(\boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu))
+~.
+```
+In practice, people generally express the backward Euler algorithm by imagining we are at time $\bar{t}$, and seeking to determine $\boldsymbol{y}$ at time $\bar{t} + \Delta t$.
+Thus, if we make the substitution $\bar{t} \rightarrow \bar{t} + \Delta t$ above, we find the canonical expression for the backward Euler method:
+```math
+\dfrac{1}{\Delta t} \, \Big(
+\boldsymbol{y}(\bar{t} + \Delta t)
+\, - \, \boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu)
+\Big)
+\, = \, \boldsymbol{f}(\boldsymbol{y}(\bar{t} + \Delta t))
+~.
+```
+When expressed in this way, we see a problem.
+Suppose that $\boldsymbol{y}(\mkern1mu\bar{t}\mkern1mu)$ is known, and we would like to solve for $\boldsymbol{y}(\bar{t} + \Delta t)$, which is unknown.
+Since $\boldsymbol{y}(\bar{t} + \Delta t)$ is present on both sides of the above equation, it is not straightforward to solve for!
+Thus, some more complex calculations are required.
+
+"""
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1274,6 +1359,13 @@ version = "1.4.1+1"
 # ╟─d5347559-bc96-48c4-a803-d339762b13f9
 # ╠═d11b0fee-54c9-4e1e-a725-00bb5c417aec
 # ╟─f8369748-3689-4af5-98dd-d02362b0b1ce
+# ╠═a97ba9c9-0f7e-41f7-b24c-c8abc6a8ee14
+# ╠═c07407f1-e6b2-4afa-b195-89e113f18bff
 # ╠═ffd084c8-fb90-49f2-9e2c-0c5170347393
+# ╠═cfb5e6ad-9bf8-42b9-8470-2837294aee7b
+# ╠═70ff01a2-19e7-4129-938a-acd8425b6b81
+# ╠═10e58e42-9efb-4850-9f7b-87ee26ae3a33
+# ╠═82803d66-4520-4d1e-97d5-3c8e8ff586dd
+# ╟─4877d644-2990-4225-b71b-ac171412d4f9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
