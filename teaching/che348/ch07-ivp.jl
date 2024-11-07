@@ -153,9 +153,9 @@ end
 begin
 	t_init = 0.0
 	t_final = 8*pi
-	num_times = 20000
+	num_times = 81
 	dt = (t_final - t_init)/num_times
-	times = t_init:dt:t_final
+	times = range(t_init, stop=t_final, length=num_times+1)
 end
 
 # ╔═╡ 70ff01a2-19e7-4129-938a-acd8425b6b81
