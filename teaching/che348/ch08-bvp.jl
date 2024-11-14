@@ -457,32 +457,16 @@ md"""
 # ╔═╡ 42949ca0-d737-4f3f-b1ee-13538705bde6
 z_array = 0.0:0.01:1.0;
 
-# ╔═╡ 67376eb9-b1a6-4cdc-a2ce-95490062a467
-Plots.plot(
-	z_array,
-	slab_exact.(z_array, 4.0, 0.5),
-	xrange = (-0.02, 1.02),
-	yrange = (0, 1.02),
-	label = "exact",
-	xlabel = "Z",
-	ylabel = "C",
-)
-
 # ╔═╡ 2f070a6c-f321-43f1-b7fb-e0eadbea4058
 begin
-	alpha = 4.0
+	alpha = 100.0
 	beta = 0.5
 
 	N = 5
 	dz = 1.0/N
 	ngamma = -2 - alpha * dz^2
 
-	A = [
-		ngamma 1 0 0;
-		1 ngamma 1 0;
-		0 1 ngamma 1;
-		0 0 1 ngamma;
-	]
+	A = [ ngamma 1 0 0; 1 ngamma 1 0; 0 1 ngamma 1; 0 0 1 ngamma; ]
 
 	b = [-1; 0; 0; -beta]
 
@@ -492,11 +476,56 @@ begin
 	c_array_manual = [1.0; c; beta]
 end
 
+# ╔═╡ 67376eb9-b1a6-4cdc-a2ce-95490062a467
+Plots.plot(
+	z_array,
+	slab_exact.(z_array, alpha, beta),
+	xrange = (-0.02, 1.02),
+	yrange = (0, 1.02),
+	label = "exact",
+	xlabel = "Z",
+	ylabel = "C",
+)
+
+# ╔═╡ 0c321d58-91b7-4e52-b77e-e4eb52247ead
+function slab_fd(N, alpha, beta)
+	dz = 1.0/N
+	ngamma = -2 - alpha * dz^2
+
+	b = zeros(N-1)
+	b[1] = -1.0
+	b[end] = -beta  # equivalent to b[N-1] = -beta
+
+	A = zeros(N-1, N-1)
+	for j=1:N-1
+		A[j,j] = ngamma
+	end
+	for j=1:N-2
+		A[j, j+1] = 1.0
+		A[j+1, j] = 1.0
+	end
+
+	c = A \ b
+	z_array = 0.0:dz:1.0
+	c_array = [1.0; c; beta]
+	return z_array, c_array
+end
+
 # ╔═╡ 001c7834-0571-4134-ad65-421ff64cf38e
 Plots.scatter!(
 	z_array_manual,
 	c_array_manual,
 	label = "manual",
+)
+
+# ╔═╡ fa84c61a-a880-48da-bcd8-6864a83f4350
+zs, cs = slab_fd(200, alpha, beta);
+
+# ╔═╡ e0dcd3c6-6e52-4537-9865-ddce3deaaa82
+Plots.scatter!(
+	zs,
+	cs,
+	label = "code",
 )
 
 # ╔═╡ 4a998886-bccd-4085-9d38-7ff0d2609af9
@@ -1672,7 +1701,10 @@ version = "1.4.1+1"
 # ╠═42949ca0-d737-4f3f-b1ee-13538705bde6
 # ╠═67376eb9-b1a6-4cdc-a2ce-95490062a467
 # ╠═2f070a6c-f321-43f1-b7fb-e0eadbea4058
+# ╠═0c321d58-91b7-4e52-b77e-e4eb52247ead
 # ╠═001c7834-0571-4134-ad65-421ff64cf38e
+# ╠═fa84c61a-a880-48da-bcd8-6864a83f4350
+# ╠═e0dcd3c6-6e52-4537-9865-ddce3deaaa82
 # ╟─4a998886-bccd-4085-9d38-7ff0d2609af9
 # ╟─bd35c34c-cc64-4724-aa2b-3e0b9ff1ba8c
 # ╟─00000000-0000-0000-0000-000000000001
