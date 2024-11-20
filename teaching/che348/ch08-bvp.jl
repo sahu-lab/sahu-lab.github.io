@@ -535,19 +535,190 @@ md"""
 
 """
 
-# ╔═╡ bd35c34c-cc64-4724-aa2b-3e0b9ff1ba8c
+# ╔═╡ 70bc16e7-542b-4098-8993-232f3291cada
 md"""
-## Flux boundary conditions
+## Boundary conditions as additional equations
 
-As you will learn in your transport and reactors courses, there are scenarios where it makes sense to specify the concentration flux—rather than the concentration itself—on the boundary.
-In the above problem, suppose you were told that instead of $C(1) = \beta$ being the boundary condition, instead
+In the above formulation, we were provided boundary conditions which set $C_0$ and $C_N$, where $N$ is the number of intervals in the domain.
+Thus, the unknown vector $\boldsymbol{c}$ contains $N-1$ values.
+However, it is also possible to include $C_0$ and $C_N$ as additional unknowns, for which the boundary conditions are treated as two additional equations.
+When $N=5$, as in the above example, we have the following six equations for the six unknowns $C_0$, $C_1$, $C_2$, $C_3$, $C_4$, and $C_5$:
 ```math
-\dfrac{\text{d} C}{\text{d} Z} \bigg\rvert_{Z = 1}
-= \ J
+\begin{aligned}
+C_0
+\, &= \, 1
+\\[7pt]
+C_{j+1}
+\, - \, \gamma \, C_j
+\, + \, C_{j-1}
+\, &= \, 0
+\qquad \text{for } \ j = 1, 2, 3, 4
+\\[7pt]
+C_5
+\, &= \, \beta
+~.
+\end{aligned}
+```
+The linear system of equations can then be expressed as
+```math
+\begin{bmatrix}
+\, 1 & 0 & 0 & 0 & 0 & 0 \, \\[4pt]
+\, 1 & -\gamma & 1 & 0 & 0 & 0 \, \\[4pt]
+\, 0 & 1 & -\gamma & 1 & 0 & 0 \, \\[4pt]
+\, 0 & 0 & 1 & -\gamma & 1 & 0 \, \\[4pt]
+\, 0 & 0 & 0 & 1 & -\gamma & 1 \, \\[4pt]
+\, 0 & 0 & 0 & 0 & 0 & 1 \,
+\end{bmatrix} \begin{bmatrix}
+C_0 \\[4pt]
+C_1 \\[4pt]
+C_2 \\[4pt]
+C_3 \\[4pt]
+C_4 \\[4pt]
+C_5
+\end{bmatrix}
+\ = \ \begin{bmatrix}
+\, 1 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\,  \beta \,
+\end{bmatrix}
 ~,
 ```
-where $J$ is a known constant.
-How would the above system of equations be altered in this case?
+from which we immediately determine all concentrations via the matrix inverse.
+Note that this method is equivalent to that obtained previously, and thus produces the same solution.
+
+
+"""
+
+# ╔═╡ bd35c34c-cc64-4724-aa2b-3e0b9ff1ba8c
+md"""
+## Different types of boundary conditions
+
+One of the reasons that $C_0$ and $C_N$ are included as unknowns to be solved for is to accommodate different boundary conditions.
+In chemical engineering practice, we are often dealing with second-order differential equations—for which one generally specifies either the fundamental variable or its derivative on the boundary.
+In mass transfer problems, a standard boundary condition is to specify either
+```math
+c \big\rvert_{\text{bdry}}
+= \ \bar{c}
+\qquad
+\text{or}
+\qquad
+- D \, \dfrac{\text{d} c}{\text{d} z} \bigg\rvert_{\text{bdry}}
+= \ \bar{j}
+~,
+```
+where $\bar{c}$ is the known, constant concentration and $\bar{j}$ is the known, constant __*diffusive mass flux.*__
+In heat transfer problems, one generally specifies either
+```math
+T \big\rvert_{\text{bdry}}
+= \ \bar{T}
+\qquad
+\text{or}
+\qquad
+- \kappa \, \dfrac{\text{d} T}{\text{d} z} \bigg\rvert_{\text{bdry}}
+= \ \bar{q}
+~,
+```
+where $\kappa$ is the thermal conductivity and $\bar{q}$ is a known __*conductive heat flux*__ at the boundary.
+In situations when there is no flux, we have
+```math
+\dfrac{\text{d} c}{\text{d} z} \bigg\rvert_{\text{bdry}}
+= \ 0
+\qquad
+\text{and}
+\qquad
+\dfrac{\text{d} T}{\text{d} z} \bigg\rvert_{\text{bdry}}
+= \ 0
+```
+for mass and heat transfer problems, respectively.
+
+In the context of the plug flow reactor, let's consider a slightly modified scenario.
+Let the governing differential equation and boundary condition on the left side be unchanged, but we now prescribe a known diffusive flux $\bar{j}$ on the right boundary.
+In this case, the dimensionless equation and boundary conditions are given by
+```math
+\dfrac{\text{d}^2 C}{\text{d} Z^2}
+\, - \, \alpha C
+\, = \, 0
+\qquad
+\text{for } ~
+0 \le Z \le 1
+~,
+\qquad
+\text{with } ~
+C(0) = 1
+~,
+\quad
+\dfrac{\text{d} C}{\text{d} Z} (1) = \bar{J}
+~,
+```
+where
+```math
+\bar{J}
+\, \equiv \, \dfrac{\ell \, \bar{j}}{c_0 \, D}
+```
+is the *dimensionless* flux on the boundary.
+If we discretize the right boundary condition, we find
+```math
+\dfrac{C_N \, - \, C_{N-1}}{\Delta Z}
+\, = \, - \bar{J}
+~,
+```
+for which
+```math
+C_{N-1}
+\, - \, C_N
+\, = \, \bar{J} \, \Delta Z
+~.
+```
+In the case where $N = 5$, we have the system of equations
+```math
+\begin{aligned}
+C_0
+\, &= \, 1
+\\[7pt]
+C_{j+1}
+\, - \, \gamma \, C_j
+\, + \, C_{j-1}
+\, &= \, 0
+\qquad \text{for } \ j = 1, 2, 3, 4
+\\[7pt]
+C_4
+\, - \, C_5
+\, &= \, \bar{J} \, \Delta Z
+~.
+\end{aligned}
+```
+In terms of a matrix and vector system, we thus have
+```math
+\begin{bmatrix}
+\, 1 & 0 & 0 & 0 & 0 & 0 \, \\[4pt]
+\, 1 & -\gamma & 1 & 0 & 0 & 0 \, \\[4pt]
+\, 0 & 1 & -\gamma & 1 & 0 & 0 \, \\[4pt]
+\, 0 & 0 & 1 & -\gamma & 1 & 0 \, \\[4pt]
+\, 0 & 0 & 0 & 1 & -\gamma & 1 \, \\[4pt]
+\, 0 & 0 & 0 & 0 & 1 & -1 \,
+\end{bmatrix} \begin{bmatrix}
+C_0 \\[4pt]
+C_1 \\[4pt]
+C_2 \\[4pt]
+C_3 \\[4pt]
+C_4 \\[4pt]
+C_5
+\end{bmatrix}
+\ = \ \begin{bmatrix}
+\, 1 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\, 0 \, \\[4pt]
+\,  \bar{J} \, \Delta Z \,
+\end{bmatrix}
+~.
+```
+From here, it is straightforward to solve for the unknown concentrations.
+
 
 """
 
@@ -1706,6 +1877,7 @@ version = "1.4.1+1"
 # ╠═fa84c61a-a880-48da-bcd8-6864a83f4350
 # ╠═e0dcd3c6-6e52-4537-9865-ddce3deaaa82
 # ╟─4a998886-bccd-4085-9d38-7ff0d2609af9
+# ╟─70bc16e7-542b-4098-8993-232f3291cada
 # ╟─bd35c34c-cc64-4724-aa2b-3e0b9ff1ba8c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
