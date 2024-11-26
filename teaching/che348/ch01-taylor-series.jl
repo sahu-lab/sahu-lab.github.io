@@ -119,7 +119,7 @@ md"""
 In a computer, one cannot sum an infinite number of terms.
 A __[truncation error](https://en.wikipedia.org/wiki/Truncation_error)__ arises because only a finite number of terms are included.
 
-Let use __*define*__ the function $$\tilde{f} (y \, ; y_0, M)$$ as the truncated polynomial series of order $$M$$, written as
+Let us __*define*__ the function $$\tilde{f} (y \, ; y_0, M)$$ as the truncated polynomial series of order $$M$$, written as
 ```math
 \tilde{f} (y \,; y_0, M)
 \, := \, \sum_{n = 0}^M \dfrac{1}{n!} \, \dfrac{\mathrm{d}^n f(y)}{\mathrm{d} y^n} \bigg\rvert_{y = y_0} \big(y - y_0 \big)^{\! n}
