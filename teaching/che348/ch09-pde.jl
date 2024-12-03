@@ -108,7 +108,7 @@ md"""
 Let us begin with a simple example: the 1D diffusion equation, with no base flow of fluid, for which
 ```math
 \dfrac{\partial c}{\partial t}
-\, = \, D \, \dfrac{\partial^2 c}{\partial t^2}
+\, = \, D \, \dfrac{\partial^2 c}{\partial x^2}
 ~.
 ```
 For the given equation, we require one initial condition and two boundary conditions in order for the problem statement to be well-posed.
