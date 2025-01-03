@@ -1,8 +1,10 @@
 ---
 title: Teaching
-head_title: teaching
+head_title: teach
 layout: page
-permalink: /teaching/
+permalink: /teach/
+redirect_from:
+ - /teaching/
 ---
 
 <ul class="course-list">

@@ -34,12 +34,13 @@ github_username:  sahu-lab
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 # Custom navigation links
 header_pages:
   - blog.md
   - pubs.md
-  - teaching.md
+  - teach.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
