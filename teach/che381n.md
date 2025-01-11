@@ -24,5 +24,5 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 # Problem Sets
 
 - [[PS01]](https://utexas.box.com/s/y1iuh1fzmkhh6hs3gm4gd1wesj70bwsl):
-due 17 January (Fri.) @ 5 pm
+due 17 January (Fri.) @ 11:59 pm
 
