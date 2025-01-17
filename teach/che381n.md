@@ -26,3 +26,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[PS01]](https://utexas.box.com/s/y1iuh1fzmkhh6hs3gm4gd1wesj70bwsl):
 due 17 January (Fri.) @ 11:59 pm
 
+- [[PS02]](https://utexas.box.com/s/g995wf8zqolme4qacs2es1ez2umscz8u):
+due 24 January (Fri.) @ 11:59 pm
+
+
