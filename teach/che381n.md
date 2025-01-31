@@ -32,4 +32,7 @@ due 24 January (Fri.) @ 11:59 pm
 - [[PS03]](https://utexas.box.com/s/6pjeenmldr0rgz5h1myf0sl157l47ksr):
 due 31 January (Fri.) @ 11:59 pm
 
+- [[PS04]](https://utexas.box.com/s/w29eug6kjxjoxib9bi35oky7llgfof55):
+due 7 February (Fri.) @ 11:59 pm
+
 
