@@ -38,4 +38,13 @@ due 14 February (Fri.) @ 11:59 pm
 - [[PS05]](https://utexas.box.com/s/eknw7rq4t7jtj236u026vmo9atfvrdfx):
 due 14 February (Fri.) @ 11:59 pm
 
+- [[PS06]](https://utexas.box.com/s/r7iqh6lpjchcjcnu0vl5ejkd0kirixgp):
+due 28 February (Fri.) @ 11:59 pm
+
+
+
+# Exams
+
+- [[Midterm 1]](https://utexas.box.com/s/vtrmpo4kx0qgebi2xbf0ovys263rhqcq):
+20 February (Thu.) @ 5:15 pm
 
