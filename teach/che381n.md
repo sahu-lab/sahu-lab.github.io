@@ -69,6 +69,6 @@ due 25 April (Fri.) @ 23:59
 - [[Midterm 2]](https://utexas.box.com/s/r3hymcdeh8mxaj17ol24iilinrvrduae):
 3 April (Thu.) @ 17:15
 
-- Final:
+- [[Final]](https://utexas.box.com/s/t4wmh0fjita4z5i9fwyhyfnzzv8fwyt9):
 2 May (Fri.) @ 15:30
 
