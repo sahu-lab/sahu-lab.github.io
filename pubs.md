@@ -13,7 +13,9 @@ permalink: /pubs/
     [[suppl]](https://pubs.acs.org/doi/suppl/10.1021/acsenergylett.5c00582/suppl_file/nz5c00582_si_001.pdf)
 
 2. **Arbitrary Lagrangian--Eulerian finite element method for lipid membranes**
-	- *J. Fluid Mech.,* 2025 (to appear) &nbsp;
+	- *J. Fluid Mech.,* 2025 &nbsp;
+    [[pdf]](https://amaresh-sahu.github.io/papers/sahu-jfm-2025.pdf)&nbsp;
+    [[doi]](https://doi.org/10.1017/jfm.2025.10553)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2412.07596)&nbsp;
     [[code]](https://github.com/sahu-lab/MembraneAleFem.jl)&nbsp;
     [[docs]](https://sahu-lab.github.io/MembraneAleFem.jl)&nbsp;
