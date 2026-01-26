@@ -358,3 +358,43 @@
 	}
   }
 }
+
+
+
+/**
+ * People
+ */
+
+.people-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.person-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.person-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.person-info h3 {
+  margin: 0;
+}
+
+.person-role {
+  font-style: italic;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.person-degrees {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
