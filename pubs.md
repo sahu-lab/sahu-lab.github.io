@@ -23,7 +23,8 @@ permalink: /pubs/
 		[[slides]](https://drive.google.com/file/d/1ZTB_VGK_TmUi2RjzP_rUQOMY4TATwy43/view?usp=sharing)
 
 3. **Osmotic forces modify lipid membrane fluctuations**
-	- *arXiv preprint,* 2025 &nbsp;
+	- *Soft Matter,* 2026 &nbsp;
+    [[doi]](https://doi.org/10.1039/D5SM01094B)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2510.10352)&nbsp;
     [[code]](https://github.com/sahu-lab/osmosis-flat)&nbsp;
     [[suppl]](https://amaresh-sahu.github.io/papers/sahu-osmosis-flat-SM.pdf)&nbsp;
