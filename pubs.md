@@ -31,7 +31,8 @@ permalink: /pubs/
 		[[slides]](https://drive.google.com/file/d/1bJshoccNza3ACY-Zrwkpibqsgr8vLIKa/view?usp=sharing)
 
 4. **Three-slab model for the dielectric permittivity of a lipid bilayer**
-	- *arXiv preprint,* 2026 &nbsp;
+	- *J. Chem. Phys.,* 2026 &nbsp;
+    [[doi]](https://doi.org/10.1063/5.0336521)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2602.18852)&nbsp;
     [[code]](https://github.com/sahu-lab/three-slab)&nbsp;
     [[suppl]](three-slab-sm.pdf)&nbsp;
