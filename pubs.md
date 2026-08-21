@@ -8,13 +8,13 @@ permalink: /pubs/
 
 1. **Tracking local pH dynamics during water electrolysis via in-line continuous flow Raman spectroscopy**
 	- *ACS Energy Letters,* 2025 &nbsp;
-    [[pdf]](https://amaresh-sahu.github.io/papers/marquez-mullins-ael-2025.pdf)&nbsp;
+    [[pdf]](marquez-ael-2025.pdf)&nbsp;
     [[doi]](https://doi.org/10.1021/acsenergylett.5c00582)&nbsp;
     [[suppl]](https://pubs.acs.org/doi/suppl/10.1021/acsenergylett.5c00582/suppl_file/nz5c00582_si_001.pdf)
 
 2. **Arbitrary Lagrangian--Eulerian finite element method for lipid membranes**
 	- *J. Fluid Mech.,* 2025 &nbsp;
-    [[pdf]](https://amaresh-sahu.github.io/papers/sahu-jfm-2025.pdf)&nbsp;
+    [[pdf]](sahu-jfm-2025.pdf)&nbsp;
     [[doi]](https://doi.org/10.1017/jfm.2025.10553)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2412.07596)&nbsp;
     [[code]](https://github.com/sahu-lab/MembraneAleFem.jl)&nbsp;
@@ -24,6 +24,7 @@ permalink: /pubs/
 
 3. **Osmotic forces modify lipid membrane fluctuations**
 	- *Soft Matter,* 2026 &nbsp;
+    [[pdf]](sahu-sm-2026.pdf)&nbsp;
     [[doi]](https://doi.org/10.1039/D5SM01094B)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2510.10352)&nbsp;
     [[code]](https://github.com/sahu-lab/osmosis-flat)&nbsp;
@@ -32,6 +33,7 @@ permalink: /pubs/
 
 4. **Three-slab model for the dielectric permittivity of a lipid bilayer**
 	- *J. Chem. Phys.,* 2026 &nbsp;
+    [[pdf]](sheraj-jcp-2026.pdf)&nbsp;
     [[doi]](https://doi.org/10.1063/5.0336521)&nbsp;
     [[arXiv]](https://arxiv.org/pdf/2602.18852)&nbsp;
     [[code]](https://github.com/sahu-lab/three-slab)&nbsp;
