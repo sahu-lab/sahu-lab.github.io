@@ -9,7 +9,7 @@ redirect_from:
 
 <ul class="course-list">
 	<li>
-		<span class="course-date">Sp24, Sp25</span>
+		<span class="course-date">Sp24, <a href="che381n/sp25/">Sp25</a></span>
 		<h3>
 			<a class="course-link" href="che381n">
 				Advanced Transport
