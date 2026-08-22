@@ -237,6 +237,34 @@
   letter-spacing: -0.012em;
 }
 
+/**
+ * Publications
+ */
+.publication-list {
+  margin-left: $spacing-unit;
+
+  .publication + .publication {
+    margin-top: $spacing-unit;
+  }
+}
+
+.publication-title {
+  line-height: 1.4;
+}
+
+.publication-details {
+  margin-top: $spacing-unit * 0.2;
+  line-height: 1.6;
+
+  a {
+    font-family: $mono-font-family;
+    @include relative-font-size(0.76);
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    white-space: nowrap;
+  }
+}
+
 .course-list {
   margin-left: 0;
   list-style: none;
