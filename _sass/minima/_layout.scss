@@ -4,17 +4,17 @@
 .site-header {
   border-top: 1.2px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
-  min-height: $spacing-unit * 1.865;
+  min-height: $spacing-unit * 2;
 
   // Positioning context for the mobile navigation icon
   position: relative;
 }
 
 .site-title {
-  @include relative-font-size(1.375);
-  font-weight: 300;
+  @include relative-font-size(1);
+  font-weight: 600;
   line-height: $base-line-height * $base-font-size * 2.25;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.015em;
   margin-bottom: 0;
   float: left;
 
@@ -30,6 +30,10 @@
 
 .site-nav {
   float: right;
+  font-family: $mono-font-family;
+  @include relative-font-size(0.78);
+  font-weight: 500;
+  letter-spacing: 0.035em;
   line-height: $base-line-height * $base-font-size * 2.25;
 
   .nav-trigger {
@@ -46,7 +50,7 @@
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: 1.35rem;
     }
   }
 
@@ -112,6 +116,8 @@
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit*0.67 0;
+  font-family: $mono-font-family;
+  @include relative-font-size(0.72);
   color: $background-color;
   background-color: $foot-color-grey;
 
@@ -139,7 +145,7 @@
 }
 
 .footer-heading {
-  @include relative-font-size(0.9375);
+  font-size: inherit;
   margin-bottom: 0;
   text-align: center;
 }
@@ -151,7 +157,7 @@
 }
 
 .footer-col-wrapper {
-  @include relative-font-size(0.9375);
+  font-size: inherit;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
@@ -191,16 +197,20 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  padding: $spacing-unit * 2 0;
   flex: 1;
+
+  @include media-query($on-palm) {
+    padding: $spacing-unit * 1.35 0;
+  }
 }
 
 .page-heading {
-  @include relative-font-size(2);
+  @include relative-font-size(2.25);
 }
 
 .post-list-heading {
-  @include relative-font-size(1.75);
+  @include relative-font-size(1.6);
 }
 
 .post-list {
@@ -208,18 +218,23 @@
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit * 1.25;
   }
 }
 
 .post-meta {
-  font-size: $small-font-size;
+  font-family: $mono-font-family;
+  @include relative-font-size(0.76);
+  letter-spacing: 0.015em;
   color: $grey-color;
 }
 
 .post-link {
   display: block;
-  @include relative-font-size(1.5);
+  @include relative-font-size(1.08);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
 }
 
 .course-list {
@@ -233,11 +248,13 @@
 	h3 {
 		margin-top: 0;
 		display: block;
-		@include relative-font-size(1.5);
+		@include relative-font-size(1.2);
 	}
 
 	.course-date {
-		font-size: $small-font-size;
+		font-family: $mono-font-family;
+		@include relative-font-size(0.76);
+		letter-spacing: 0.015em;
 		color: $grey-color;
 	}
 }
@@ -252,9 +269,9 @@
 }
 
 .post-title {
-  @include relative-font-size(2.0);
-  letter-spacing: -1px;
-  line-height: 1;
+  @include relative-font-size(2.25);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 
   @include media-query($on-laptop) {
     @include relative-font-size(2);
@@ -267,7 +284,7 @@
   margin-bottom: $spacing-unit;
 
   h1 {
-    @include relative-font-size(1.75);
+    @include relative-font-size(1.7);
 
     @include media-query($on-laptop) {
       @include relative-font-size(1.625);
@@ -276,12 +293,12 @@
   }
 
   h2 {
-    @include relative-font-size(1.375);
+    @include relative-font-size(1.4);
 
     @include media-query($on-laptop) {
       @include relative-font-size(1.375);
     }
-    margin-top: $spacing-unit*0.66;
+    margin-top: $spacing-unit * 1.5;
   }
 
   h3 {
@@ -290,7 +307,7 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
-    margin-top: $spacing-unit*0.5;
+    margin-top: $spacing-unit;
   }
 
   h4 {
@@ -311,32 +328,32 @@
 .home {
 
   .title {
-    @include relative-font-size(2.0);
-    letter-spacing: -1px;
-    line-height: 1;
+    @include relative-font-size(2.4);
+    letter-spacing: -0.035em;
+    line-height: 1.12;
 
     @include media-query($on-laptop) {
       @include relative-font-size(2);
     }
 
-    margin-top: $spacing-unit;
-		margin-bottom: $spacing-unit*0.5;
+    margin-top: 0;
+		margin-bottom: $spacing-unit;
   }
 
   .content {
     margin-bottom: $spacing-unit;
 
     h1 {
-      @include relative-font-size(1.75);
+      @include relative-font-size(1.7);
 
       @include media-query($on-laptop) {
         @include relative-font-size(1.625);
       }
-      margin-top: $spacing-unit;
+      margin-top: $spacing-unit * 2;
     }
 
     h2 {
-      @include relative-font-size(1.625);
+      @include relative-font-size(1.45);
 
       @include media-query($on-laptop) {
         @include relative-font-size(1.375);
@@ -345,14 +362,14 @@
     }
 
 	li {
-	  margin-bottom: $spacing-unit*0.40;
+	  margin-bottom: $spacing-unit * 0.25;
 
 	  strong {
-        @include relative-font-size(1.1);
+		font-weight: 600;
 	  }
 
 	  li {
-	    margin-top: $spacing-unit*0.06;
+	    margin-top: $spacing-unit * 0.13;
 	    margin-bottom: 0;
 	  }
 	}
@@ -397,4 +414,3 @@
   padding-left: 1.2rem;
   margin: 0.5rem 0;
 }
-
