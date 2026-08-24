@@ -21,13 +21,20 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 
 
-# Problem Sets
+## Office Hours
+
+- Amaresh Sahu: **Tuesday, 1--2:30 pm** in CPE 3.462
+- David Pinegar: **Monday, 1--2 pm** and **Wednesday, 10--11 am** in CPE 2.222
+
+
+
+## Problem Sets
 
 - to be posted
 
 
 
-# Exams
+## Exams
 
 - Midterm 1:
 8 October (in lecture) 
