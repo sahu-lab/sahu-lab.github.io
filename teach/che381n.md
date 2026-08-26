@@ -30,7 +30,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 ## Problem Sets
 
-- to be posted
+- [[01]](https://utexas.box.com/v/che381n-fa26-ps01qs): Due 03 September
 
 
 
@@ -38,10 +38,38 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 - Midterm 1:
 8 October (in lecture) 
-
 - Midterm 2:
 12 November (in lecture)
-
 - Final:
 10 December @ 13:00
+
+
+
+## Lectures
+
+
+### 01: Review of mathematics, prerequisite material
+
+We expect you are familiar with standard mathematical concepts from an
+undergraduate degree in chemical engineering.
+A partial list of topics is presented below:
+- vector and multivariable calculus
+  - dot product, cross product, magnitude of a vector, gradient of a scalar
+    function, divergence and curl of a vector field, Taylor series in multiple
+    variables and dimensions, cylindrical and spherical coordinate systems
+- linear algebra
+  - eigenvalues and eigenvectors, symmetric and antisymmetric matrices, matrices
+    as linear transformations
+- ordinary and partial differential equations
+
+
+### 02: Intro, motivation, and dimensional analysis (simple treatment)
+
+- reading (intro):
+  - [has] §1
+  - [pp] §1
+  - [lgl] Ch. 1: §A,§B
+- reading (dimensional analysis):
+  - [has] §§3.1, 3.2, 3.4, 3.7, 3.10
+
 
