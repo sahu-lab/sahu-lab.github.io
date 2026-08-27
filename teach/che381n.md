@@ -65,6 +65,12 @@ A partial list of topics is presented below:
 
 ### 02: Intro, motivation, and dimensional analysis (simple treatment)
 
+- examples:
+  - dolphins and bubble rings [[link]](https://www.youtube.com/shorts/e2M8CCxAGaw)
+  - forming marbling art patterns [[link]](https://www.youtube.com/watch?v=yzlPvtDmtAE)
+  - instabilities and pattern formation in clouds [[link]](https://youtu.be/nVZzwcsyHWY?si=fy9h2IvolLZkuj07&t=25)
+  - drug delivery [[link]](https://www.youtube.com/watch?v=aFU5Qx-cLu8)
+  - medication [[link]](https://www.youtube.com/watch?v=mH81Q9Dtodc)
 - reading (intro):
   - [has] §1
   - [pp] §1
