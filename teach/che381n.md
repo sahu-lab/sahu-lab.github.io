@@ -62,6 +62,19 @@ A partial list of topics is presented below:
     as linear transformations
 - ordinary and partial differential equations
 
+#### Resources
+
+The following may be helpful in reviewing material:
+- D.T. Leighton's *The Mathematical Language of Transport*
+  [[link]](https://diffusivepress.org/books/transportmath.pdf)
+- my linear algebra notes for undergraduate numerical methods
+  [[link]](https://sahu-lab.github.io/teach/che348/ch02-linear-algebra.html)
+- Grant Sanderson's series on
+  [[calculus]](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr),
+  [[linear algebra]](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab),
+  and
+  [[differential equations]](https://www.youtube.com/playlist?list=PLZHQObOWTQDNPOjrT6KVlfJuKtYTftqH6)
+
 
 ### 02: Intro, motivation, and dimensional analysis (simple treatment)
 
