@@ -90,5 +90,21 @@ The following may be helpful in reviewing material:
   - [lgl] Ch. 1: §A,§B
 - reading (dimensional analysis):
   - [has] §§3.1, 3.2, 3.4, 3.7, 3.10
+  - [as] Ch. 2: §3
+
+
+### 03: Dimensional analysis (formal treatment)
+
+- examples:
+  - nucleolar surface fluctuations: data collapse in Fig. 4
+    [[link]](https://doi.org/10.1103/PhysRevLett.121.148101)
+    [[news]](https://physics.aps.org/articles/v11/101)
+  - vortices in flowing river [[link]](https://youtube.com/shorts/A9wLa4hXnME)
+- __*required reading:*__
+  - [as] Ch. 2
+
+
+### 04: Mathematical preliminaries
+
 
 
