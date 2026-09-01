@@ -23,7 +23,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 ## Office Hours
 
-- Amaresh Sahu: **Tuesday, 1--2:30 pm** in CPE 3.462
+- Amaresh Sahu: **Tuesday, 1--3 pm** in CPE 3.462
 - David Pinegar: **Monday, 1--2 pm** and **Wednesday, 10--11 am** in CPE 2.222
 
 
@@ -99,6 +99,8 @@ The following may be helpful in reviewing material:
   - nucleolar surface fluctuations: data collapse in Fig. 4
     [[link]](https://doi.org/10.1103/PhysRevLett.121.148101)
     [[news]](https://physics.aps.org/articles/v11/101)
+  - Ilya Sutskever on scaling in AI
+    [[link]](https://www.youtube.com/shorts/pLHWn5SQvLM)
   - vortices in flowing river [[link]](https://youtube.com/shorts/A9wLa4hXnME)
 - __*required reading:*__
   - [as] Ch. 2
