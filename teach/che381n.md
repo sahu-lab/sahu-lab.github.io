@@ -31,6 +31,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 ## Problem Sets
 
 - [[01]](https://utexas.box.com/v/che381n-fa26-ps01qs): Due 03 September
+- [[02]](https://utexas.box.com/v/che381n-fa26-ps02qs): Due 10 September
 
 
 
@@ -104,9 +105,21 @@ The following may be helpful in reviewing material:
   - vortices in flowing river [[link]](https://youtube.com/shorts/A9wLa4hXnME)
 - __*required reading:*__
   - [as] Ch. 2
+- optional reading:
+  - [has] Ch. 3
 
 
 ### 04: Mathematical preliminaries
+
+- examples:
+  - flow visualization (see vector velocities)
+  [[link]](https://www.youtube.com/watch?v=7FpW960gkVE)
+  - complex transport phenomena [[link]](https://www.youtube.com/watch?v=yTlkw8B7Mls&t=63s)
+- reading:
+  - [as]  Ch. 3
+  - [has] § 2
+  - [kkm] § 1
+  - [pp]  § 2
 
 
 
