@@ -1,0 +1,63 @@
+- title: Three-slab model for the dielectric permittivity of a lipid bilayer
+  journal: J. Chem. Phys.
+  year: 2026
+  links:
+    - label: pdf
+      url: /pubs/sheraj-jcp-2026.pdf
+    - label: doi
+      url: https://doi.org/10.1063/5.0336521
+    - label: arXiv
+      url: https://arxiv.org/pdf/2602.18852
+    - label: code
+      url: https://github.com/sahu-lab/three-slab
+    - label: suppl
+      url: /pubs/three-slab-sm.pdf
+
+- title: Osmotic forces modify lipid membrane fluctuations
+  journal: Soft Matter
+  year: 2026
+  links:
+    - label: pdf
+      url: /pubs/sahu-sm-2026.pdf
+    - label: doi
+      url: https://doi.org/10.1039/D5SM01094B
+    - label: arXiv
+      url: https://arxiv.org/pdf/2510.10352
+    - label: code
+      url: https://github.com/sahu-lab/osmosis-flat
+    - label: suppl
+      url: https://amaresh-sahu.github.io/papers/sahu-osmosis-flat-SM.pdf
+    - label: slides
+      url: https://drive.google.com/file/d/1bJshoccNza3ACY-Zrwkpibqsgr8vLIKa/view?usp=sharing
+
+- title: Arbitrary Lagrangian--Eulerian finite element method for lipid membranes
+  journal: J. Fluid Mech.
+  year: 2025
+  links:
+    - label: pdf
+      url: /pubs/sahu-jfm-2025.pdf
+    - label: doi
+      url: https://doi.org/10.1017/jfm.2025.10553
+    - label: arXiv
+      url: https://arxiv.org/pdf/2412.07596
+    - label: code
+      url: https://github.com/sahu-lab/MembraneAleFem.jl
+    - label: docs
+      url: https://sahu-lab.github.io/MembraneAleFem.jl
+    - label: talk
+      url: https://www.youtube.com/watch?v=t4RkePFFc-Q
+    - label: slides
+      url: https://drive.google.com/file/d/1ZTB_VGK_TmUi2RjzP_rUQOMY4TATwy43/view?usp=sharing
+
+- title: Tracking local pH dynamics during water electrolysis via in-line continuous flow Raman spectroscopy
+  journal: ACS Energy Lett.
+  year: 2025
+  links:
+    - label: pdf
+      url: /pubs/marquez-ael-2025.pdf
+    - label: doi
+      url: https://doi.org/10.1021/acsenergylett.5c00582
+    - label: suppl
+      url: https://pubs.acs.org/doi/suppl/10.1021/acsenergylett.5c00582/suppl_file/nz5c00582_si_001.pdf
+
+
