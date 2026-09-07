@@ -1,3 +1,14 @@
+- title: "Molecular interfacial rheology: Lipid membrane shear viscosity"
+  journal: arXiv preprint
+  year: 2026
+  links:
+    - label: arXiv
+      url: https://arxiv.org/pdf/2609.05373
+    - label: code
+      url: https://github.com/sahu-lab/mem-visc
+    - label: suppl
+      url: /pubs/mir-sm.pdf
+
 - title: Three-slab model for the dielectric permittivity of a lipid bilayer
   journal: J. Chem. Phys.
   year: 2026
