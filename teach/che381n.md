@@ -109,12 +109,20 @@ The following may be helpful in reviewing material:
   - [has] Ch. 3
 
 
-### 04: Mathematical preliminaries
+### 04--05: Mathematical preliminaries
 
 - examples:
   - flow visualization (see vector velocities)
   [[link]](https://www.youtube.com/watch?v=7FpW960gkVE)
-  - complex transport phenomena [[link]](https://www.youtube.com/watch?v=yTlkw8B7Mls&t=63s)
+  - complex transport phenomena
+  [[link]](https://www.youtube.com/watch?v=yTlkw8B7Mls&t=63s)
+  - critical opalescence: a different scaling in physics
+    [[link]](https://www.youtube.com/watch?v=q5tHlbFU0Co)
+  - Richard Feynman on mathematics vs physics
+  [[link]](https://www.youtube.com/watch?v=B-eh2SD54fM)
+    - bonus: the pleasure of finding things out
+    [[short]](https://www.youtube.com/shorts/9vvUFM9RxQ4)
+    [[long]](https://www.youtube.com/watch?v=f61KMw5zVhg)
 - reading:
   - [as]  Ch. 3
   - [has] § 2
