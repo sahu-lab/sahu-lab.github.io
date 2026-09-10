@@ -1,0 +1,54 @@
+- name: Amaresh Sahu
+  role: Principal Investigator
+  image: /assets/headshots/a-sahu.png
+  email: asahu@che.utexas.edu
+  cv: https://utexas.box.com/v/amaresh-sahu-cv
+  website: https://amaresh-sahu.github.io/
+  scholar: TtICnaQAAAAJ
+  degrees:
+    - Ph.D. Chemical and Biomolecular Engineering, University of California at Berkeley, U.S.A.
+    - B.S.E. Chemical and Biological Engineering, Princeton University, U.S.A.
+  research: >
+    Soft matter theory and numerical methods.
+
+- name: M.M.B. Sheraj
+  role: Graduate Student
+  image: /assets/headshots/m-sheraj.jpg
+  email: sheraj.physics@utexas.edu
+  scholar: Uv7wszUAAAAJ
+  degrees:
+    - M.S. Physics, University of Dhaka, Bangladesh
+    - B.S. Physics, University of Dhaka, Bangladesh
+  research: >
+    Statistical mechanics and electrostatics of biological membranes.
+
+- name: Zhi-Xun Xu
+  role: Graduate Student
+  image: /assets/headshots/z-xu.png
+  email: zhixunxu@utexas.edu
+  scholar: ho_1HwkAAAAJ
+  degrees:
+    - M.S. Civil Engineering, National Taiwan University, Taiwan
+    - B.S. Mathematics, National Taiwan University, Taiwan
+  research: >
+    Non-equilibrium statistical mechanics of biological membranes.
+
+- name: Ikseong Sur
+  role: Graduate Student
+  image: /assets/headshots/i-sur.png
+  email: isur@utexas.edu
+  degrees:
+    - B.S. Chemical and Biological Engineering, Seoul National University, South Korea
+  research: >
+    Viscoelastic materials and vesicle adhesion
+
+- name: David A. Pinegar
+  role: Graduate Student
+  image: /assets/headshots/d-pinegar.png
+  email: pinegar@utexas.edu
+  degrees:
+    - B.S. Chemical Engineering, University of Arizona, U.S.A.
+    - B.S. Mathematics, University of Arizona, U.S.A.
+  research: >
+    Electrochemistry and transport phenomena.
+

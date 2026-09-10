@@ -1,0 +1,584 @@
+/**
+ * Site header
+ */
+.site-header {
+  border-top: 1.2px solid $grey-color-dark;
+  border-bottom: 1px solid $grey-color-light;
+  min-height: $spacing-unit * 2;
+
+  // Positioning context for the mobile navigation icon
+  position: relative;
+}
+
+.site-title {
+  @include relative-font-size(1);
+  font-weight: 600;
+  line-height: $base-line-height * $base-font-size * 2.25;
+  letter-spacing: -0.015em;
+  margin-bottom: 0;
+  float: left;
+
+  &,
+  &:visited {
+    color: $grey-color-dark;
+  }
+
+	> img {
+		width: $base-line-height * $base-font-size * 1.5;
+	}
+}
+
+.site-nav {
+  float: right;
+  font-family: $mono-font-family;
+  @include relative-font-size(0.78);
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  line-height: $base-line-height * $base-font-size * 2.25;
+
+  .nav-trigger {
+      display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    color: $text-color;
+    line-height: $base-line-height;
+
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 1.35rem;
+    }
+  }
+
+  @include media-query($on-palm) {
+    position: absolute;
+    top: 9px;
+    right: $spacing-unit / 2;
+    background-color: $background-color;
+    border: 1px solid $grey-color-light;
+    border-radius: 5px;
+    text-align: right;
+
+    label[for="nav-trigger"] {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 36px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      padding-top: 10px;
+      text-align: center;
+
+      > svg {
+        fill: $grey-color-dark;
+      }
+    }
+
+    input ~ .trigger {
+      clear: both;
+      display: none;
+    }
+
+    input:checked ~ .trigger {
+      display: block;
+      padding-bottom: 5px;
+    }
+
+    .page-link {
+      display: block;
+      padding: 5px 10px;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+      margin-left: 20px;
+    }
+  }
+}
+
+
+
+/**
+ * Site footer
+ */
+.site-footer {
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit*0.67 0;
+  font-family: $mono-font-family;
+  @include relative-font-size(0.72);
+  color: $background-color;
+  background-color: $foot-color-grey;
+
+  a {
+    color: $background-color;
+    text-decoration: underline;
+
+    &:visited {
+      color: $background-color;
+    }
+
+    &:hover {
+      color: $background-color;
+      text-decoration: underline;
+    }
+
+    .social-media-list &:hover {
+      text-decoration: none;
+
+      .username {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footer-heading {
+  font-size: inherit;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.contact-list,
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.footer-col-wrapper {
+  font-size: inherit;
+  margin-left: -$spacing-unit / 2;
+  @extend %clearfix;
+}
+
+.footer-col {
+  float: left;
+  margin-bottom: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
+}
+
+.footer-col-1,
+.footer-col-2 {
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width:         calc(50% - (#{$spacing-unit} / 2));
+  text-align: center;
+}
+
+@include media-query($on-laptop) {
+  .footer-col-1,
+  .footer-col-2 {
+    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+    width:         calc(50% - (#{$spacing-unit} / 2));
+  }
+}
+
+@include media-query($on-palm) {
+  .footer-col {
+    float: none;
+    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+    width:         calc(100% - (#{$spacing-unit} / 2));
+  }
+}
+
+
+
+/**
+ * Page content
+ */
+.page-content {
+  padding: $spacing-unit * 2 0;
+  flex: 1;
+
+  @include media-query($on-palm) {
+    padding: $spacing-unit * 1.35 0;
+  }
+}
+
+.page-heading {
+  @include relative-font-size(2.25);
+}
+
+.post-list-heading {
+  @include relative-font-size(1.6);
+}
+
+.post-list {
+  margin-left: 0;
+  list-style: none;
+
+  > li {
+    margin-bottom: $spacing-unit * 1.25;
+  }
+}
+
+.post-meta {
+  font-family: $mono-font-family;
+  @include relative-font-size(0.76);
+  letter-spacing: 0.015em;
+  color: $grey-color;
+}
+
+.post-link {
+  display: block;
+  @include relative-font-size(1.08);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+}
+
+.course-list {
+  margin-left: 0;
+  list-style: none;
+
+  > li {
+    margin-bottom: $spacing-unit;
+  }
+
+	h3 {
+		margin-top: 0;
+		display: block;
+		@include relative-font-size(1.2);
+	}
+
+	.course-date {
+		font-family: $mono-font-family;
+		@include relative-font-size(0.76);
+		letter-spacing: 0.015em;
+		color: $grey-color;
+	}
+}
+
+
+
+/**
+ * Posts
+ */
+.post-header {
+  margin-bottom: $spacing-unit;
+}
+
+.post-title {
+  @include relative-font-size(2.25);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+
+  @include media-query($on-laptop) {
+    @include relative-font-size(2);
+  }
+
+  margin-top: $spacing-unit;
+}
+
+.post-content {
+  margin-bottom: $spacing-unit;
+
+  h1 {
+    @include relative-font-size(1.7);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.625);
+    }
+    margin-top: $spacing-unit;
+  }
+
+  h2 {
+    @include relative-font-size(1.4);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.375);
+    }
+    margin-top: $spacing-unit * 1.5;
+  }
+
+  h3 {
+    @include relative-font-size(1.25);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.125);
+    }
+    margin-top: $spacing-unit;
+  }
+
+  h4 {
+    @include relative-font-size(1.125);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1);
+    }
+  }
+}
+
+
+
+/**
+ * Home page
+ */
+
+.home {
+
+  .title {
+    @include relative-font-size(2.4);
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(2);
+    }
+
+    margin-top: 0;
+		margin-bottom: $spacing-unit;
+  }
+
+  .content {
+    margin-bottom: $spacing-unit;
+
+    h1 {
+      @include relative-font-size(1.7);
+
+      @include media-query($on-laptop) {
+        @include relative-font-size(1.625);
+      }
+      margin-top: $spacing-unit * 2;
+    }
+
+    h2 {
+      @include relative-font-size(1.45);
+
+      @include media-query($on-laptop) {
+        @include relative-font-size(1.375);
+      }
+      margin-top: $spacing-unit*0.66;
+    }
+
+	li {
+	  margin-bottom: $spacing-unit * 0.25;
+
+	  strong {
+		font-weight: 600;
+	  }
+
+	  li {
+	    margin-top: $spacing-unit * 0.13;
+	    margin-bottom: 0;
+	  }
+	}
+  }
+}
+
+.lead {
+  margin-bottom: $spacing-unit * 0.8;
+  @include relative-font-size(1.12);
+  line-height: 1.62;
+}
+
+.research-question {
+  margin: $spacing-unit * 1.2 0 $spacing-unit * 1.5;
+  padding-left: $spacing-unit * 0.7;
+  border-left: 2px solid $brand-color;
+  @include relative-font-size(1.18);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.home-links,
+.research-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-unit * 0.65;
+  margin: $spacing-unit * 1.2 0 $spacing-unit * 2;
+
+  a {
+    font-family: $mono-font-family;
+    @include relative-font-size(0.78);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+}
+
+.joining-list {
+  margin-top: $spacing-unit;
+  border-bottom: 1px solid $grey-color-light;
+}
+
+.joining-item {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: $spacing-unit;
+  padding: $spacing-unit * 0.75 0;
+  border-top: 1px solid $grey-color-light;
+
+  h3 {
+    margin: 0;
+    font-family: $mono-font-family;
+    @include relative-font-size(0.78);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include media-query($on-palm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-unit * 0.25;
+  }
+}
+
+
+
+/**
+ * Research page
+ */
+
+.research-directions {
+  margin: $spacing-unit * 0.8 0 $spacing-unit * 1.5;
+  border-bottom: 1px solid $grey-color-light;
+}
+
+.research-direction {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: $spacing-unit;
+  padding: $spacing-unit * 0.8 0;
+  border-top: 1px solid $grey-color-light;
+
+  h3 {
+    margin: 0;
+    font-family: $mono-font-family;
+    @include relative-font-size(0.8);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include media-query($on-palm) {
+    grid-template-columns: 1fr;
+    gap: $spacing-unit * 0.3;
+  }
+}
+
+.featured-research {
+  margin: $spacing-unit * 1.5 0 $spacing-unit * 2;
+  padding: $spacing-unit;
+  border: 1px solid $grey-color-light;
+  border-left: 3px solid $brand-color;
+
+  h3 {
+    margin: $spacing-unit * 0.25 0 $spacing-unit * 0.5;
+  }
+
+  p {
+    margin-bottom: $spacing-unit * 0.55;
+  }
+}
+
+.featured-research-label,
+.featured-research-links {
+  font-family: $mono-font-family;
+  @include relative-font-size(0.74);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.featured-research-label {
+  color: $grey-color;
+}
+
+.featured-research-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-unit * 0.5;
+}
+
+.research-footer-links {
+  margin-bottom: 0;
+}
+
+
+
+/**
+ * Publications
+ */
+
+.publication-list {
+  margin-left: $spacing-unit;
+
+  .publication + .publication {
+    margin-top: $spacing-unit;
+  }
+}
+
+.publication-title {
+  line-height: 1.4;
+}
+
+.publication-details {
+  margin-top: $spacing-unit * 0.2;
+  line-height: 1.6;
+
+  a {
+    margin-left: 0.4rem;
+    font-family: $mono-font-family;
+    @include relative-font-size(0.76);
+    font-weight: 500;
+    letter-spacing: 0.015em;
+    white-space: nowrap;
+  }
+}
+
+
+
+/**
+ * People
+ */
+
+.people-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.person-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.person-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.person-info h3 {
+  margin: 0;
+}
+
+.person-role {
+  font-style: italic;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.person-degrees {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
