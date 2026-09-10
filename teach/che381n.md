@@ -32,6 +32,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 - [[01]](https://utexas.box.com/v/che381n-fa26-ps01qs): Due 03 September
 - [[02]](https://utexas.box.com/v/che381n-fa26-ps02qs): Due 10 September
+- [[03]](https://utexas.box.com/v/che381n-fa26-ps03qs): Due 17 September
 
 
 
@@ -109,7 +110,7 @@ The following may be helpful in reviewing material:
   - [has] Ch. 3
 
 
-### 04--05: Mathematical preliminaries
+### 04--06: Mathematical preliminaries
 
 - examples:
   - flow visualization (see vector velocities)
