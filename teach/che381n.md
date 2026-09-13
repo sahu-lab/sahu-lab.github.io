@@ -24,7 +24,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 ## Office Hours
 
 - Amaresh Sahu: **Tuesday, 1--3 pm** in CPE 3.462
-- David Pinegar: **Monday, 1--2 pm** and **Wednesday, 10--11 am** in CPE 2.222
+- David Pinegar: **Monday, 1--2 pm** in BUR 128 and **Wednesday, 10--11 am** in CPE 2.222
 
 
 
