@@ -39,11 +39,11 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 ## Exams
 
 - Midterm 1:
-8 October (in lecture) 
+  8 October (in lecture) 
 - Midterm 2:
-12 November (in lecture)
+  12 November (in lecture)
 - Final:
-10 December @ 13:00
+  10 December @ 13:00
 
 
 
@@ -67,7 +67,7 @@ A partial list of topics is presented below:
 #### Resources
 
 The following may be helpful in reviewing material:
-- D.T. Leighton's *The Mathematical Language of Transport*
+- David Leighton Jr.'s *The Mathematical Language of Transport*
   [[link]](https://diffusivepress.org/books/transportmath.pdf)
 - my linear algebra notes for undergraduate numerical methods
   [[link]](https://sahu-lab.github.io/teach/che348/ch02-linear-algebra.html)
@@ -89,10 +89,10 @@ The following may be helpful in reviewing material:
 - reading (intro):
   - [has] §1
   - [pp] §1
-  - [lgl] Ch. 1: §A,§B
+  - [lgl] Ch.1: §A,§B
 - reading (dimensional analysis):
   - [has] §§3.1, 3.2, 3.4, 3.7, 3.10
-  - [as] Ch. 2: §3
+  - [as] Ch.2: §3
 
 
 ### 03: Dimensional analysis (formal treatment)
@@ -105,30 +105,53 @@ The following may be helpful in reviewing material:
     [[link]](https://www.youtube.com/shorts/pLHWn5SQvLM)
   - vortices in flowing river [[link]](https://youtube.com/shorts/A9wLa4hXnME)
 - __*required reading:*__
-  - [as] Ch. 2
+  - [as] Ch.2
 - optional reading:
-  - [has] Ch. 3
+  - [has] §3
 
 
 ### 04--06: Mathematical preliminaries
 
 - examples:
   - flow visualization (see vector velocities)
-  [[link]](https://www.youtube.com/watch?v=7FpW960gkVE)
+    [[link]](https://www.youtube.com/watch?v=7FpW960gkVE)
   - complex transport phenomena
-  [[link]](https://www.youtube.com/watch?v=yTlkw8B7Mls&t=63s)
+    [[link]](https://www.youtube.com/watch?v=yTlkw8B7Mls&t=63s)
   - critical opalescence: a different scaling in physics
     [[link]](https://www.youtube.com/watch?v=q5tHlbFU0Co)
   - Richard Feynman on mathematics vs physics
-  [[link]](https://www.youtube.com/watch?v=B-eh2SD54fM)
+    [[link]](https://www.youtube.com/watch?v=B-eh2SD54fM)
     - bonus: the pleasure of finding things out
-    [[short]](https://www.youtube.com/shorts/9vvUFM9RxQ4)
-    [[long]](https://www.youtube.com/watch?v=f61KMw5zVhg)
+      [[short]](https://www.youtube.com/shorts/9vvUFM9RxQ4)
+      [[long]](https://www.youtube.com/watch?v=f61KMw5zVhg)
 - reading:
-  - [as]  Ch. 3
-  - [has] § 2
-  - [kkm] § 1
-  - [pp]  § 2
+  - [as]  Ch.3
+  - [has] §2
+  - [kkm] §1
+  - [pp]  §2
+
+
+### 07: Kinematics
+
+- examples:
+  - deformations of continuous media
+    [[link]](https://www.youtube.com/watch?v=Tmsn2qXbgXU&t=208s)
+  - flow visualization around objects
+    [[link]](https://youtu.be/30_aADFVL9M?t=11)
+    [[link]](https://www.youtube.com/watch?v=MOhq3o0UGAQ)
+  - vesicle in flow
+    [[tumbling]](https://www.youtube.com/watch?v=1rj2fWZ9Qh4)
+    [[pearling]](https://www.youtube.com/watch?v=sMeUZKpqc98)
+  - flow through a constriction
+    [[link]](https://www.youtube.com/watch?v=zyyzEiKftIM&t=91s)
+  - reversible flow
+    [[link]](https://www.youtube.com/watch?v=53Rgjmr2rl0&t=822s)
+- __*required reading:*__
+  - [as] Ch.4
+- optional reading:
+  - [pp] §3 (detailed)
+  - [kkm] §2 (detailed)
+  - [has] §§4.5,4.6
 
 
 
