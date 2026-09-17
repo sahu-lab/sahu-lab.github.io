@@ -33,6 +33,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[01]](https://utexas.box.com/v/che381n-fa26-ps01qs): Due 03 September
 - [[02]](https://utexas.box.com/v/che381n-fa26-ps02qs): Due 10 September
 - [[03]](https://utexas.box.com/v/che381n-fa26-ps03qs): Due 17 September
+- [[04]](https://utexas.box.com/v/che381n-fa26-ps04qs): Due 24 September
 
 
 
@@ -131,7 +132,7 @@ The following may be helpful in reviewing material:
   - [pp]  §2
 
 
-### 07: Kinematics
+### 07--08: Kinematics
 
 - examples:
   - deformations of continuous media
