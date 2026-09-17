@@ -1,0 +1,30 @@
+<div class="person-card">
+	<img src="{{ person.image }}" alt="{{ person.name }}" class="person-photo">
+
+	<div class="person-info">
+		<h3>{{ person.name }}</h3>
+		<p class="person-role">{{ person.role }}</p>
+
+		<ul class="person-degrees">
+			{% for degree in person.degrees %}
+				<li>{{ degree }}</li>
+			{% endfor %}
+			{% if person.email %}
+				<li>contact: <a class="person-email" href="mailto:{{ person.email }}" target="_blank">{{ person.email }}</a></li>
+			{% endif %}
+			{% if person.cv %}
+				<li><a class="person-website" href="{{ person.cv }}" target="_blank">Curriculum Vitae</a></li>
+			{% endif %}
+			{% if person.scholar %}
+				<li><a class="person-website" href="https://scholar.google.com/citations?hl=en&user={{ person.scholar }}&view_op=list_works&sortby=pubdate" target="_blank">Google Scholar</a></li>
+			{% endif %}
+			{% if person.website %}
+				<li><a class="person-website" href="{{ person.website }}" target="_blank">Website</a></li>
+			{% endif %}
+		</ul>
+
+		<!--p class="person-research">{{ person.research }}</p-->
+	</div>
+</div>
+<br>
+
