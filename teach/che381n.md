@@ -34,7 +34,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[02]](https://utexas.box.com/v/che381n-fa26-ps02qs): Due 10 September
 - [[03]](https://utexas.box.com/v/che381n-fa26-ps03qs): Due 17 September
 - [[04]](https://utexas.box.com/v/che381n-fa26-ps04qs): Due 24 September
-
+- [[05]](https://utexas.box.com/v/che381n-fa26-ps05qs): Due 01 October
 
 
 ## Exams
@@ -132,7 +132,7 @@ The following may be helpful in reviewing material:
   - [pp]  §2
 
 
-### 07--08: Kinematics
+### 07--10: Kinematics
 
 - examples:
   - deformations of continuous media
@@ -153,6 +153,9 @@ The following may be helpful in reviewing material:
   - [pp] §3 (detailed)
   - [kkm] §2 (detailed)
   - [has] §§4.5,4.6
+
+
+### 11: Preparation for the balance laws
 
 
 
