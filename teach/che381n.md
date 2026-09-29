@@ -157,5 +157,14 @@ The following may be helpful in reviewing material:
 
 ### 11: Preparation for the balance laws
 
+- examples:
+- __*required reading:*__
+  - [as] Ch.5
+- optional reading:
+  - [has] §§4.1,4.2 (one dimension), §§4.7,4.8
+  - [kkm] §§3.2,3.3 (note Theorem 3.2.3)
+  - [pp] §§4.1,4.3,4.4
+  - [lgl] Ch.2§B
+
 
 
