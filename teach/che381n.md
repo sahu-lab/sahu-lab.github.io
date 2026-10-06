@@ -157,7 +157,6 @@ The following may be helpful in reviewing material:
 
 ### 11: Preparation for the balance laws
 
-- examples:
 - __*required reading:*__
   - [as] Ch.5
 - optional reading:
@@ -166,5 +165,31 @@ The following may be helpful in reviewing material:
   - [pp] §§4.1,4.3,4.4
   - [lgl] Ch.2§B
 
+
+### 12: Balance of mass (continuity equation)
+
+- examples:
+  - blood flow in the body [[link]](https://youtu.be/BmnfR-D8ewE)
+  - arteriovenous fistula [[link]](https://www.youtube.com/watch?v=ppQESANtHcQ)
+  - bacterial networks
+  [[link]](https://www.quantamagazine.org/the-ocean-teems-with-networks-of-interconnected-bacteria-20250106/)
+- reading:
+  - [as] Ch.6
+  - [has] §§4.1--4.8
+  - [kkm] §3.3
+  - [pp] §4.4
+
+
+### 13: Balance of linear momentum
+
+- examples:
+  - turbulence (William Irvine)
+  [[article]](https://www.quantamagazine.org/an-unexpected-twist-lights-up-the-secrets-of-turbulence-20200903/)
+  [[manuscript]](https://www.nature.com/articles/s41567-023-02052-0)
+- reading:
+  - [as] Ch.8
+  - [has] §4.9
+  - [kkm] §3.4
+  - [lgl] Ch.2§C
 
 
