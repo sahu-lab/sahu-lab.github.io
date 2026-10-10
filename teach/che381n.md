@@ -35,6 +35,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[03]](https://utexas.box.com/v/che381n-fa26-ps03qs): Due 17 September
 - [[04]](https://utexas.box.com/v/che381n-fa26-ps04qs): Due 24 September
 - [[05]](https://utexas.box.com/v/che381n-fa26-ps05qs): Due 01 October
+- [[06]](https://utexas.box.com/v/che381n-fa26-ps06qs): Due 22 October
 
 
 ## Exams
@@ -180,7 +181,7 @@ The following may be helpful in reviewing material:
   - [pp] §4.4
 
 
-### 13: Balance of linear momentum
+### 13--14: Balance of linear momentum
 
 - examples:
   - turbulence (William Irvine)
