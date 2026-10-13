@@ -181,16 +181,23 @@ The following may be helpful in reviewing material:
   - [pp] §4.4
 
 
-### 13--14: Balance of linear momentum
+### 13--14: Balance of linear and angular momentum
 
 - examples:
   - turbulence (William Irvine)
   [[article]](https://www.quantamagazine.org/an-unexpected-twist-lights-up-the-secrets-of-turbulence-20200903/)
   [[manuscript]](https://www.nature.com/articles/s41567-023-02052-0)
+  - colloidal chiral fluids (William Irvine)
+  [[link]](https://doi.org/10.1038/s41567-019-0603-8)
+  - laminar vs turbulent flow
+  [[link]](https://www.youtube.com/shorts/DYSN_4JX8K8)
+  - angular momentum of continua (Dahler and Scriven)
+  [[link]](https://www.nature.com/articles/192036a0.pdf)
 - reading:
   - [as] Ch.8
   - [has] §4.9
   - [kkm] §3.4
   - [lgl] Ch.2§C
+  - tractions and stress: [[link]](https://home.iitk.ac.in/~ag/ME321/stress.pdf)
 
 
