@@ -181,7 +181,7 @@ The following may be helpful in reviewing material:
   - [pp] §4.4
 
 
-### 13--14: Balance of linear and angular momentum
+### 13--15: Balance of linear and angular momentum
 
 - examples:
   - turbulence (William Irvine)
@@ -199,5 +199,6 @@ The following may be helpful in reviewing material:
   - [kkm] §3.4
   - [lgl] Ch.2§C
   - tractions and stress: [[link]](https://home.iitk.ac.in/~ag/ME321/stress.pdf)
+  - [[as-thesis]](https://amaresh-sahu.github.io/papers/a-sahu-thesis.pdf) Ch.III 
 
 
