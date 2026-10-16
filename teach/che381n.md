@@ -40,7 +40,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 ## Exams
 
-- Midterm 1:
+- [[Midterm 1]](https://utexas.box.com/v/che381n-fa26-mt1qs):
   8 October (in lecture) 
 - Midterm 2:
   12 November (in lecture)
