@@ -202,3 +202,16 @@ The following may be helpful in reviewing material:
   - [[as-thesis]](https://amaresh-sahu.github.io/papers/a-sahu-thesis.pdf) Ch.III 
 
 
+### 16: Isothermal Newtonian fluids
+
+- examples:
+  - hydrodynamic starvation in larval fishes: video SM02
+    [[link]](https://doi.org/10.1073/pnas.1323205111)
+  - eating marshmallows underwater
+    [[video]](https://www.youtube.com/watch?v=eqyotQTTquo)
+- reading:
+  - [kkm] §4
+  - [has] §4.12, §5.5.2
+  - [lgl] Ch.2§F,§H
+
+
