@@ -36,6 +36,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[04]](https://utexas.box.com/v/che381n-fa26-ps04qs): Due 24 September
 - [[05]](https://utexas.box.com/v/che381n-fa26-ps05qs): Due 01 October
 - [[06]](https://utexas.box.com/v/che381n-fa26-ps06qs): Due 22 October
+- [[07]](https://utexas.box.com/v/che381n-fa26-ps07qs): Due 29 October
 
 
 ## Exams
@@ -202,7 +203,7 @@ The following may be helpful in reviewing material:
   - [[as-thesis]](https://amaresh-sahu.github.io/papers/a-sahu-thesis.pdf) Ch.III 
 
 
-### 16: Isothermal Newtonian fluids
+### 16: Isothermal Newtonian fluids: Navier--Stokes
 
 - examples:
   - hydrodynamic starvation in larval fishes: video SM02
@@ -213,5 +214,15 @@ The following may be helpful in reviewing material:
   - [kkm] §4
   - [has] §4.12, §5.5.2
   - [lgl] Ch.2§F,§H
+
+
+### 17: Start-up of Couette flow; structure of Navier--Stokes
+
+- examples:
+  - experimental realization [[link]](https://youtu.be/Tmsn2qXbgXU?t=173)
+- reading:
+  - [kkm] §4.3 (steady state), §4.6 (start-up)
+  - [as] Ch.9
+  
 
 
