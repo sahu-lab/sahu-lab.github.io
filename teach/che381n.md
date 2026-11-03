@@ -44,7 +44,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[Midterm 1]](https://utexas.box.com/v/che381n-fa26-mt1qs):
   8 October (in lecture) 
 - Midterm 2:
-  12 November (in lecture)
+  12 November (6--8 pm)
 - Final:
   10 December @ 13:00
 
@@ -216,13 +216,30 @@ The following may be helpful in reviewing material:
   - [lgl] Ch.2§F,§H
 
 
-### 17: Start-up of Couette flow; structure of Navier--Stokes
+### 17: Start-up of Couette flow
 
 - examples:
   - experimental realization [[link]](https://youtu.be/Tmsn2qXbgXU?t=173)
 - reading:
   - [kkm] §4.3 (steady state), §4.6 (start-up)
   - [as] Ch.9
-  
+
+
+### 18--19: Boundary conditions, Gravity-driven flow down an incline, the Reynolds number
+
+- reading:
+  - [has] §§1.6,4.19,5.2.5
+  - [kkm] §§4.4,4.7
+  - [lgl] Ch.2§L,§M (the latter is advanced but quite interesting)
+
+
+### 20--21: Balance of energy and the heat equation
+
+- reading:
+  - [has] §4.13
+  - [kkm] §5.1
+  - [lgl] Ch.2§D,§E
+
+
 
 
