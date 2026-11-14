@@ -36,7 +36,8 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[04]](https://utexas.box.com/v/che381n-fa26-ps04qs): Due 24 September
 - [[05]](https://utexas.box.com/v/che381n-fa26-ps05qs): Due 01 October
 - [[06]](https://utexas.box.com/v/che381n-fa26-ps06qs): Due 22 October
-- [[07]](https://utexas.box.com/v/che381n-fa26-ps07qs): Due 29 October
+- [[07]](https://utexas.box.com/v/che381n-fa26-ps07qs): Due 05 November
+- [[08]](https://utexas.box.com/v/che381n-fa26-ps08qs): Due 20 November
 
 
 ## Exams
@@ -44,7 +45,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[Midterm 1]](https://utexas.box.com/v/che381n-fa26-mt1qs):
   8 October (in lecture) 
 - Midterm 2:
-  12 November (6--8 pm)
+  12 November (in lecture)
 - Final:
   10 December @ 13:00
 
@@ -239,6 +240,12 @@ The following may be helpful in reviewing material:
   - [has] §4.13
   - [kkm] §5.1
   - [lgl] Ch.2§D,§E
+
+
+### 22: Cooling via a metallic fin: Biot number
+
+
+### 23: Multi-component mass balance
 
 
 
