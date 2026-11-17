@@ -23,7 +23,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 
 ## Office Hours
 
-- Amaresh Sahu: **Tuesday, 1--3 pm** in CPE 3.462
+- Amaresh Sahu: **Tuesday, 1--3 pm** in ACS 2.278
 - David Pinegar: **Monday, 1--2 pm** in BUR 128 and **Wednesday, 10--11 am** in CPE 2.222
 
 
@@ -47,7 +47,8 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[Midterm 2]](https://utexas.box.com/v/che381n-fa26-mt2qs):
   12 November (in lecture)
 - Final:
-  10 December @ 13:00
+  10 December 12:30--3:30 pm in CPE 2.222
+  - Review session: 8 December 11 am--1 pm in CPE 2.222
 
 
 
@@ -236,7 +237,11 @@ The following may be helpful in reviewing material:
 
 ### 20--21: Balance of energy and the heat equation
 
+- examples:
+  - "carry over" cooking (thermal diffusion)
+    [[link]](https://youtube.com/shorts/VUng6MHKWdY)
 - reading:
+  - [as] Ch.9
   - [has] §4.13
   - [kkm] §5.1
   - [lgl] Ch.2§D,§E
@@ -244,8 +249,26 @@ The following may be helpful in reviewing material:
 
 ### 22: Cooling via a metallic fin: Biot number
 
+- examples:
+  - why radiators have fins [[link]](https://youtu.be/2BKckblriMc)
+- reading:
+  - [as] Ch.9
 
-### 23: Multi-component mass balance
+
+### 23--24: Multi-component mass balance
+
+- examples:
+  - fisher wave (e.g. zombie apocalypse)
+    [[analysis]](https://laughmaths.blogspot.com/2016/02/diffusion-of-dead-maths-of-zombie.html)
+    [[simulation]](https://www.youtube.com/watch?v=ySD1mxIJtWM)
+  - fountain pen ink in water
+    [[link]](https://youtube.com/shorts/8yz9wbxYu8s?si=237A25aWU6faoZSS)
+  - cleaning a fountain pen
+    [[link]](https://youtu.be/yF9IRI5WxXg?si=OsJDTIlnACbPbRZ5&t=77)
+- reading:
+  - [kkm] §5.6 (particularly §5.6.1, §5.6.5)
+  - for electrochemists: [[fong et al.]](https://doi.org/10.1002/aic.17091)
+- (longer) video lectures: [[playlist]](https://youtube.com/playlist?list=PLyTsEQTq49lmonX86T8UpAe2fWiyIRrJP&si=E_5qOzgTTrP-y_R8)
 
 
 
