@@ -38,6 +38,7 @@ The concepts of non-dimensionalization and scaling are emphasized throughout.
 - [[06]](https://utexas.box.com/v/che381n-fa26-ps06qs): Due 22 October
 - [[07]](https://utexas.box.com/v/che381n-fa26-ps07qs): Due 05 November
 - [[08]](https://utexas.box.com/v/che381n-fa26-ps08qs): Due 20 November
+- [[09]](https://utexas.box.com/v/che381n-fa26-ps09qs): Due 03 December
 
 
 ## Exams
@@ -269,6 +270,10 @@ The following may be helpful in reviewing material:
   - [kkm] §5.6 (particularly §5.6.1, §5.6.5)
   - for electrochemists: [[fong et al.]](https://doi.org/10.1002/aic.17091)
 - (longer) video lectures: [[playlist]](https://youtube.com/playlist?list=PLyTsEQTq49lmonX86T8UpAe2fWiyIRrJP&si=E_5qOzgTTrP-y_R8)
+
+
+### 25--26: Spherical self-similarity solution
+
 
 
 
